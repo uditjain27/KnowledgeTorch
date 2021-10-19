@@ -1,0 +1,35 @@
+section{
+    width: 85vw;
+    height: auto;
+    margin: 30px auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+}
+
+.content{
+    width: 100%;
+}
+
+.request_login{
+    height: auto;
+    width: auto;
+    margin: 2rem 0;
+}
+
+.request_login .btn_request_login{
+    background-color: green;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    border: none;
+    box-shadow: 0 0.3rem 0.7rem white;
+    border-radius: 0.75rem;
+    color: white;
+    cursor: pointer;
+}
+
+.request_login .btn_request_login span{
+    margin-left: 0.5rem;
+}

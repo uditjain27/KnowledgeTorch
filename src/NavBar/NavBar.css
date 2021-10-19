@@ -1,0 +1,10 @@
+.nav{
+    background-color: #343A40;
+    height: auto;
+    width: 100vw;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25rem;
+}
