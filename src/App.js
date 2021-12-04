@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import Home from './PageData/Home/Home';
@@ -6,36 +6,30 @@ import DashBoard from './PageData/DashBoard/DashBoard';
 import Upload from './PageData/Upload/Upload';
 import Contributor from './PageData/Contributor/Contributor';
 import ContactUs from './PageData/ContactUs/ContactUs';
+import SearchedResult from './PageData/SearchResult/SearchedResult';
 import Profile from './PageData/Profile/Profile';
+import { useDispatch, useSelector } from 'react-redux';
+import ViewPopup from './ViewDocument/ViewPopup';
+import Layout from './UI/Layout';
+import { LoginActions } from './store/login-slice';
 
 function App() {
 
+  const isLogin = useSelector((state) => state.loginStore.isLogin);
+  const dispatch = useDispatch();
+  const data = JSON.parse(localStorage.getItem("credentials"));
+  console.log(data);
 
-  /* const [page, UpdatePageState] = useState(<Home></Home>);
-
-  function UpdatePage(state) {
-    let element;
-    switch (state) {
-      case 'Home': element = <Home></Home>;
-        break;
-      case 'DashBoard': element = <DashBoard></DashBoard>;
-        break;
-      case 'Uploads': element = <Upload></Upload>;
-        break;
-      case 'Top Contributors': element = <Contributor></Contributor>;
-        break;
-      case 'Contact Us': element = <ContactUs></ContactUs>;
-        break;
-      default: element = <Home></Home>;
-        break;
+  useEffect(()=>{
+    if(data){
+      dispatch(LoginActions.setIsLogin(data));
     }
-
-    UpdatePageState(element);
-  } */
+  },[]);
 
   return (
+    <Layout>
       <Switch>
-        <Route path='/home'>
+        <Route path='/home' exact>
           <Home></Home>
         </Route>
         <Route path='/dashboard'>
@@ -50,18 +44,20 @@ function App() {
         <Route path='/contactus'>
           <ContactUs />
         </Route>
-        <Route path='/profile'>
+        <Route path='/search'>
+          <SearchedResult />
+        </Route>
+        {<Route path='/profile'>
           <Profile />
+        </Route>}
+        <Route path='/home/content/:documentId'>
+          <ViewPopup />
         </Route>
         <Route path='*'>
           <Redirect to='/home' />
-          {/* <Home /> */}
         </Route>
-        {/* <div className="App">
-      <NavBar UpdatePage={UpdatePage}></NavBar>
-      {page}
-    </div> */}
       </Switch>
+    </Layout>
   );
 }
 

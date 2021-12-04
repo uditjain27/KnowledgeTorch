@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import Button from './Button';
 import { AuthContext } from '../../store/login-context';
-import './LoginRegister.css';
+import classes from './LoginRegister.module.css';
 
 function LoginRegister(props) {
     
@@ -12,7 +12,7 @@ function LoginRegister(props) {
     }
     
     return (
-        <div className='login-register'>
+        <div className={classes.login_register}>
             <Button onClick={showHideModal} />
         </div>
     )

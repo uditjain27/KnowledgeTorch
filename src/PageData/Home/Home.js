@@ -1,22 +1,20 @@
-import './Home.css';
+import classes from './Home.module.css';
 import BigLogo from './BigLogo';
 import SearchBar from './SearchBar';
 import NavBar from '../../NavBar/NavBar';
 import { Fragment } from 'react';
+import SearchedResult from '../SearchResult/SearchedResult';
+import { Route } from 'react-router';
+import TopContributors from './TopContributors';
 
 
 function Home(props) {
     return (
-        <Fragment>
-
-        {/* <AuthContextProvider> */}
-            <NavBar />
-            <header>
-                <BigLogo></BigLogo>
-                <SearchBar></SearchBar>
-            </header>
-        {/* //</AuthContextProvider> */}
-        </Fragment>
+        <header className={classes.header}>
+            <BigLogo></BigLogo>
+            <SearchBar></SearchBar>
+            <TopContributors></TopContributors>
+        </header>
     )
 }
 

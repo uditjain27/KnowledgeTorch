@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import './Logo.css';
+import classes from './Logo.module.css';
 
 function Logo(){
     return(
-        <NavLink to='/home' className='logo'>Knowledge <br/> Torch</NavLink>
+        <NavLink to='/home' className={classes.logo}>Knowledge <br/> Torch<i className="fas fa-book-open"></i></NavLink>
     )
 }
 

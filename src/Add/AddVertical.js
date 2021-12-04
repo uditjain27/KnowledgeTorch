@@ -1,8 +1,8 @@
-import './AddVertical.css';
+import classes from './AddVertical.module.css';
 
 function AddVertical(props){
     return(
-        <div className='AddVertical'></div>
+        <div className={classes.AddVertical}></div>
     )
 }
 

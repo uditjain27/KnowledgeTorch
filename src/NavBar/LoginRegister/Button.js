@@ -1,9 +1,9 @@
-import './Button.css';
+import classes from './Button.module.css';
 
 function Button(props){
 
     return(
-        <button className='btn__login-register' type='button' onClick={props.onClick}>SignUp/SignIn</button>
+        <button className={classes.btn__login_register} type='button' onClick={props.onClick}>SignUp/SignIn</button>
     )
 }
 

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export const AuthContext = React.createContext({
     isModalVisible: false,
     loginFormVisible: true,
-    toggleModalView: () => { },
+    toggleModalView: (gg) => { },
     setFormView: () => { },
     toggleFormView: () => { }
 });
@@ -12,8 +12,8 @@ export default props => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [LoginFormVisible, setLoginFormVisible] = useState(true);
 
-    const toggleModalView = () => {
-        setIsModalVisible(!isModalVisible);
+    const toggleModalView = (gg = !isModalVisible) => {
+        setIsModalVisible(gg);
     }
 
 

@@ -1,0 +1,19 @@
+.login_register{
+    padding-right: 2.5rem;
+}
+
+.btn__login_register{
+    background-color: rgb(255, 255, 255);
+    border: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-right: 15px;
+}
+
+.btn__login_register i{
+    margin-left: 10px;
+}

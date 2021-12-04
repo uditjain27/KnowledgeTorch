@@ -1,0 +1,66 @@
+.main{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 75vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section__left{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: start;
+  width: 22vw;
+  font-size: 1.1rem;
+  padding-top: 25px;
+}
+
+.section__right{
+  border-left: 1px #000 solid;
+  min-height: 85vh;
+  width: 100%;
+}
+
+.tab{
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 15px;
+  width: 15vw;
+}
+
+.active{
+  /*background-color: rgba(24, 54, 44, 0.774);
+  border: 5px rgb(24, 54, 44) solid;
+  color: #fff;*/
+  box-sizing: border-box;
+  background:#f16;
+ color:white;
+ padding:6px 12px 8px 12px;
+ border:none;
+ font-size:18px;
+ border-radius:0 100px 100px 0;
+ box-shadow: -2px -2px 10px rgba(0,0,0,.25) inset, 2px 2px 10px white inset;
+ width: 15vw;
+}
+
+
+/*
+/////////////////////////////////////////////////////////
+Profile
+/////////////////////////////////////////////////////////
+*/
+.header{
+  margin: 1rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+
+/*
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+*/

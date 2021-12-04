@@ -1,0 +1,13 @@
+.description i{
+    font-size: 5rem;    
+}
+.description h1{
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-family: cursive;
+}
+.description p{
+    font-size: 1.3rem;
+    margin-top: 5px;
+    text-transform: uppercase;
+}

@@ -1,10 +1,10 @@
-import './HyperLinks.css';
+import classes from './HyperLinks.module.css';
 import Logo from './Logo';
 import HyperLinksList from './HyperLinksList';
 
 function HyperLinks(props){
     return(
-        <div className='links'>
+        <div className={classes.links}>
             <Logo />
             <HyperLinksList/>
         </div>

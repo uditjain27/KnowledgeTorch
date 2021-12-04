@@ -1,0 +1,9 @@
+.btn__login_register{
+    color: tomato;
+    font-size: 1.25rem;
+    background-color: transparent;
+    margin: 0.5rem;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}

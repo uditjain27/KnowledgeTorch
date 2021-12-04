@@ -1,0 +1,16 @@
+.logo{
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: cursive;
+    margin-left: 15px;
+}
+
+.logo i{
+    margin-left: 10px;
+    color: rgb(61, 180, 61);
+}

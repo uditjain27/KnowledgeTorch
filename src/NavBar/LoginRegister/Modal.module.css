@@ -1,0 +1,65 @@
+.modal{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    background-color: rgb(202, 202, 202);
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 15;
+    border-radius: 25px;
+    padding: 100px 30px 40px 30px;
+}
+
+.card h1{
+    font-weight: 500;
+    font-size: 2rem;
+    margin: -60px 0 -20px 0;
+}
+
+.card form{
+    padding: 20px;
+    padding-bottom: 0;
+    /* background-color: chocolate; */
+}
+
+.btn_submit{
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    margin-top: 30px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(32, 165, 14);
+}
+
+.callout{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.close_button{
+    font-size: 2.2rem;
+    border-radius: 0px 15px 0 5px;
+    border: none;
+    background-color: red;
+    padding: 0px 20px;
+    color: white;
+    cursor: pointer;
+}

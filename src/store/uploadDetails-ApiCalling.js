@@ -1,50 +1,13 @@
-const sendDataURL = 'http://notepi-env.eba-7vmpbvka.us-east-2.elasticbeanstalk.com/notes'
-const sendDescriptionURL = 'http://localhost:5000/notes'
-const sendFileURL1 = 'http://localhost:5000/notes'
+import { URL } from "./helper";
+import { searchedDocsActions } from "./searchedDocs-slice";
+import { UISliceActions } from "./ui-slice";
+const sendDescriptionURL = URL + '/notes';
+const sendProfileDataURL = URL + '/users';
+const fetchDetailsURL = URL + '/notes/notes/';
+const sendFileURL1 = 'http://localhost:5000/notes';
 
-const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1ZGl0amFpbiIsImV4cCI6MTYzNDY5Njk4NSwiaWF0IjoxNjM0NjYwOTg1fQ.MTXtyXQW-F6URTh4SnAAUnm-dXjqMZCIizWRW_rV9IM';
-
-/*export const fetchProfileData = () => {
-  return async (dispatch) => {
-    const fetchData = async () => {
-      const response = await fetch(
-        getDataURL
-      );
-
-      if (!response.ok) {
-        throw new Error('Could not fetch users data!');
-      }
-
-      const data = await response.json();
-
-      return data;
-    };
-
-    try {
-      const userData = await fetchData();
-      dispatch(
-        /* LoginActions.setUserData({
-          name: userData.name,
-          college: userData.college,
-          contactNo: userData.contactNo
-        }) 
-      );
-    } catch (error) {
-      console.log(error);
-      alert(error);
-      /* dispatch(
-        uiActions.showNotification({
-          status: 'error',
-          title: 'Error!',
-          message: 'Fetching cart data failed!',
-        })
-      ); 
-    }
-  };
-};*/
 
 export const sendUploadData = (data) => {
-  console.log("Random");
   return async (dispatch) => {
     /* dispatch(
       uiActions.showNotification({
@@ -54,63 +17,48 @@ export const sendUploadData = (data) => {
       })
     ); */
 
-    /*
-    {
-  "email": "string",
-  "name": "string",
-  "password": "string",
-  "username": "string"
-}
-*/
-
-
     const sendSetDescriptionRequest = async () => {
-      console.log(data);
-      console.log(typeof data.name);
-      console.log(typeof data.mediaType);
-      console.log(typeof data.description);
       const response = await fetch(
         sendDescriptionURL,
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
+            'Authorization': 'Bearer ' + data.token
           },
           body: JSON.stringify(
             {
               description: data.description,
               mediaType: data.mediaType,
               id: 10,
-              name: data.name
+              name: data.name,
+              subject: data.subject,
+              type: data.type
             }
           )
         }
       );
 
       if (!response.ok) {
-        throw new Error(Object(response));
-        //throw new Error('Sending file data failed.');
+        //throw new Error(Object(response));
+        throw new Error('Sending file data failed.');
       }
       const ids = await response.json();
 
       return ids;
     };
     const sendSetFileRequest = async (id) => {
-      console.log(Object.entries(data.file));
-      
+      //console.log(Object.entries(data.file)); 
       let fd = new FormData();
-      fd.append("src", data.file);
-      //console.log(new Blob(r.readAsBinaryString(data.file)));
+      fd.append("file", data.file);
       const response = await fetch(
-        `${sendDescriptionURL}/${id}/data` ,
+        `${sendDescriptionURL}/${id}/data`,
         {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/pdf',
-            'Authorization': 'Bearer ' + token
+            'Authorization': 'Bearer ' + data.token
           },
-          body: fd//.stream()
+          body: fd
         }
       );
 
@@ -118,9 +66,6 @@ export const sendUploadData = (data) => {
         throw new Error("sending file failed");
         //throw new Error('Sending file data failed.');
       }
-      const ids = await response.json();
-
-      return ids;
     };
 
     try {
@@ -128,7 +73,7 @@ export const sendUploadData = (data) => {
       const id = await sendSetDescriptionRequest();
       await sendSetFileRequest(id.id);
       console.log("Uploaded Successfully");
-      console.log(id);
+      console.log(id.id);
       /* dispatch(
         LoginActions.setUserData({
           name: data.name,
@@ -157,3 +102,143 @@ export const sendUploadData = (data) => {
     }
   };
 };
+
+
+
+export const fetchSearchDetails = (data) => {
+  return async (dispatch) => {
+    const fetchData = async () => {
+      const response = await fetch(
+        fetchDetailsURL + data
+      );
+
+      if (!response.ok)
+        throw new Error("Failed");
+
+      return await response.json();
+    }
+
+    try {
+      dispatch(UISliceActions.setLoading());
+      const details = await fetchData();
+      console.log(details);
+      dispatch(searchedDocsActions.setList({
+        keyword: data,
+        list: details
+      }));
+      dispatch(UISliceActions.setLoading());
+      console.log(details);
+    } catch (error) {
+      console.log(error);
+      dispatch(UISliceActions.setLoading());
+    }
+  }
+}
+
+
+
+export const setProfileData = (data) => {
+  return async (dispatch) => {
+    const sendProfileData = async () => {
+      const response = await fetch(
+        sendProfileDataURL,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + data.token
+          },
+          body: JSON.stringify(
+            {
+              id: data.id,
+              username:data.userName,
+              name: data.name,
+              email: data.email,
+              phone: data.contactNo,
+              organization: data.college,
+              specialization: data.course,
+              yearsOfExperience : data.year
+            }
+          )
+        }
+      );
+
+      if (!response.ok) {
+        //throw new Error(Object(response));
+        throw new Error('Sending Profile data failed.');
+      }
+      return;
+    };
+    
+
+    try {
+      dispatch(UISliceActions.setLoading());
+      console.log("In function");
+      await sendProfileData();
+      console.log("Uploaded Successfully");
+      dispatch(UISliceActions.setLoading());
+      /* dispatch(
+        uiActions.showNotification({
+          status: 'success',
+          title: 'Success!',
+          message: 'Sent cart data successfully!',
+        })
+      ); */
+    } catch (error) {
+      dispatch(UISliceActions.setLoading());
+      console.log(error);
+      //alert(error);
+      /* dispatch(
+        uiActions.showNotification({
+          status: 'error',
+          title: 'Error!',
+          message: 'Sending cart data failed!',
+        })
+      ); */
+    }
+  };
+};
+
+
+
+export const fetchProfileData = () => {
+  return async (dispatch) => {
+    const fetchData = async () => {
+      const response = await fetch(
+        sendFileURL1
+      );
+
+      if (!response.ok) {
+        throw new Error('Could not fetch users data!');
+      }
+
+      const data = await response.json();
+      return data;
+    };
+
+    try {
+      dispatch(UISliceActions.setLoading());
+      const userData = await fetchData();
+      dispatch(UISliceActions.setLoading());
+      /*dispatch(
+        /* LoginActions.setUserData({
+          name: userData.name,
+          college: userData.college,
+          contactNo: userData.contactNo
+        }) 
+      );*/
+    } catch (error) {
+      console.log(error);
+      alert(error);
+      dispatch(UISliceActions.setLoading());
+      /* dispatch(
+        uiActions.showNotification({
+          status: 'error',
+          title: 'Error!',
+          message: 'Fetching cart data failed!',
+        })
+      ); */
+    }
+  };
+};
+

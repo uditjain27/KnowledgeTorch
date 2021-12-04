@@ -1,14 +1,14 @@
 import { NavLink } from 'react-router-dom';
-import './HyperLinksList.css';
+import classes from './HyperLinksList.module.css';
 
 function HyperLinksList(props) {
-    const links = ['Home', 'DashBoard', 'Uploads', 'Top Contributors', 'Contact Us'];
+    const links = ['Home', 'Uploads', 'Top Contributors', 'Contact Us'];
 
     return (
-        <ul className='navbar-list'>
+        <ul className={classes.navbar_list}>
             {links.map((link, index) =>
-                <NavLink to={`/${link.toLowerCase().trim().replace(' ', '')}`} activeClassName={'active'} key={link}>
-                    <li className={'items'} >
+                <NavLink to={`/${link.toLowerCase().trim().replace(' ', '')}`} activeClassName={classes.active} key={link}>
+                    <li className={classes.items} >
                         {link}
                     </li>
                 </NavLink>)
