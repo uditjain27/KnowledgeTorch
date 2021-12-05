@@ -1,5 +1,6 @@
 import { Fragment, useContext } from 'react';
 import { Provider, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import AddVertical from '../../Add/AddVertical';
 import NavBar from '../../NavBar/NavBar';
 import { AuthContext } from '../../store/login-context';
@@ -10,10 +11,10 @@ import classes from'./Upload.module.css';
 function Upload(props) {
 
     const ctx = useContext(AuthContext);
+    const history = useHistory();
 
     const showLogin = function () {
-        ctx.setFormView();
-        ctx.toggleModalView();
+        history.push('/signup');
     }
 
     const isLogin = useSelector((state) => state.loginStore.isLogin);
@@ -22,10 +23,10 @@ function Upload(props) {
         <section className={classes.section}>
             <div className={classes.content}>
                 {!isLogin && <div className={`${classes.request_login} ${classes.hidden}`}>
-                    <button className={classes.btn_request_login} onClick={showLogin}>
+                    <Link to='/signup' className={classes.btn_request_login} onClick={showLogin}>
                         <i className="fas fa-lock"></i>
                         <span>Login to view your contributions</span>
-                    </button>
+                    </Link>
                 </div>}
                 {isLogin && <Form></Form>}
             </div>

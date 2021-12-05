@@ -1,19 +1,20 @@
 .container{
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  margin-top: 50px;
-  background-color: #fff;
-  padding: 50px 80px 0 80px;
+  margin-bottom: -30px;
+  background-color: #f2f2f2;
+  padding: 30px 80px 0 80px;
   box-sizing: border-box;
+  height: 100vh;
 }
 
 .header{
   font-size: 50px;
   text-transform: uppercase;
   font-weight: 600;
-  border-bottom: 2px #000 solid;
 }
 .wrapper{
   width: 100%;
@@ -24,9 +25,9 @@
   margin-bottom: 100px;
 }
 .card {
-  width: 375px;
-  height: 450px;
-  margin: 50px 25px;
+  width: 355px;
+  height: 375px;
+  margin: 70px 20px 0 20px;
   border-radius: 3px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   overflow: hidden;
@@ -35,32 +36,28 @@
 
 .card .thumb {
   width: auto;
-  height: 330px;
+  height: 320px;
   border-radius: 3px;
+  background-position: center bottom;
+  background-size: contain;
 }
 
 .first .thumb{
   background: url("https://png.pngtree.com/png-vector/20191212/ourmid/pngtree-first-place-golden-medal-for-sport-podium-winner-png-image_2050416.jpg") no-repeat;
-}
-
-.second{
-  position: absolute;
-  top: 50px;
-  left: -50px;
+  background-position: center top;
+  background-size: 100% 100%;
 }
 
 .second .thumb{
   background: url("https://png.pngtree.com/png-vector/20191212/ourmid/pngtree-second-place-silver-medal-for-sport-podium-winner-png-image_2050419.jpg") no-repeat;
-}
-
-.third{
-  position: absolute;
-  top: 100px;
-  right: -50px;
+  background-position: center top;
+  background-size: 100% 100%;
 }
 
 .third .thumb{
   background: url("https://png.pngtree.com/png-vector/20191212/ourmid/pngtree-third-place-bronze-medal-for-sport-podium-winner-png-image_2050412.jpg") no-repeat;
+  background-position: center top;
+  background-size: 100% 100%;
 }
 
 .card .infos {
@@ -77,10 +74,12 @@
   letter-spacing: 3px;
   color: #152536;
   font-family: "Grotesque Black", sans-serif;
-  font-size: 1rem;
+  font-size: 1.3rem;
   text-transform: uppercase;
   text-shadow: 0 0 0px #32577f;
   transition: 0.4s 0.15s cubic-bezier(0.17, 0.67, 0.5, 1.03);
+  transform: translateY(-80%);
+  text-align: center;
 }
 
 .card .infos .date, .card .infos .seats {
@@ -109,7 +108,7 @@
   color: rgba(21, 37, 54, 0.7);
   opacity: 0;
   transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
-  margin-top: 15px;
+  margin-top: 1px;
   padding: 0 10px;
 }
 
@@ -132,13 +131,14 @@
   transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
 }
 .card:hover .infos {
-  transform: translateY(-280px);
+  transform: translateY(-325px);
   background-color: rgba(255, 255, 255, 0.918);
 }
 
 .card:hover .infos .title{
   font-size: 1.4rem;
   margin-bottom: 20px;
+  transform: translateY(0%);
 }
 
 .card:hover .infos .seats, .card:hover .infos .txt, .card:hover .infos .details {

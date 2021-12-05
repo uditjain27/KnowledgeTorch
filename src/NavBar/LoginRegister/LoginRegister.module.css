@@ -1,7 +1,6 @@
 .login_register{
     padding-right: 2.5rem;
 }
-
 .btn__login_register{
     background-color: rgb(255, 255, 255);
     border: none;
@@ -16,4 +15,14 @@
 
 .btn__login_register i{
     margin-left: 10px;
+}
+
+.btn_login_register{
+    color: tomato;
+    font-size: 1.25rem;
+    background-color: transparent;
+    margin: 0.5rem;
+    cursor: pointer;
+    outline: none;
+    border: none;
 }

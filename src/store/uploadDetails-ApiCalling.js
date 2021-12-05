@@ -3,7 +3,7 @@ import { searchedDocsActions } from "./searchedDocs-slice";
 import { UISliceActions } from "./ui-slice";
 const sendDescriptionURL = URL + '/notes';
 const sendProfileDataURL = URL + '/users';
-const fetchDetailsURL = URL + '/notes/notes/';
+const fetchDetailsURL = URL + '/notes/';
 const sendFileURL1 = 'http://localhost:5000/notes';
 
 
@@ -30,7 +30,6 @@ export const sendUploadData = (data) => {
             {
               description: data.description,
               mediaType: data.mediaType,
-              id: 10,
               name: data.name,
               subject: data.subject,
               type: data.type
@@ -48,11 +47,13 @@ export const sendUploadData = (data) => {
       return ids;
     };
     const sendSetFileRequest = async (id) => {
+    //const sendSetFileRequest = async () => {
       //console.log(Object.entries(data.file)); 
       let fd = new FormData();
       fd.append("file", data.file);
       const response = await fetch(
         `${sendDescriptionURL}/${id}/data`,
+        //`${sendDescriptionURL}/13/data`,
         {
           method: 'POST',
           headers: {
@@ -71,9 +72,11 @@ export const sendUploadData = (data) => {
     try {
       console.log("In function");
       const id = await sendSetDescriptionRequest();
+      console.log("description");
       await sendSetFileRequest(id.id);
-      console.log("Uploaded Successfully");
-      console.log(id.id);
+      //await sendSetFileRequest();
+      alert("Uploaded Successfully");
+      //console.log(id.id);
       /* dispatch(
         LoginActions.setUserData({
           name: data.name,
@@ -151,13 +154,13 @@ export const setProfileData = (data) => {
           body: JSON.stringify(
             {
               id: data.id,
-              username:data.userName,
+              username: data.userName,
               name: data.name,
               email: data.email,
               phone: data.contactNo,
               organization: data.college,
               specialization: data.course,
-              yearsOfExperience : data.year
+              yearsOfExperience: data.year
             }
           )
         }
@@ -169,7 +172,7 @@ export const setProfileData = (data) => {
       }
       return;
     };
-    
+
 
     try {
       dispatch(UISliceActions.setLoading());

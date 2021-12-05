@@ -1,12 +1,15 @@
 .section{
-    width: 85vw;
-    height: auto;
-    margin: 30px auto;
+    width: 100vw;
+    height: 88.5vh;
+    margin: 0px auto;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: row;
     text-align: center;
+    background : url(https://europeanmovement.eu/wp-content/uploads/2017/09/education.jpg) no-repeat;
+    background-size: cover;
+    background-position: center bottom;
 }
 
 .content{

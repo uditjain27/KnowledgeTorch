@@ -1,13 +1,24 @@
-.description i{
-    font-size: 5rem;    
+.description{
+    width: 100%;
+    background: url(https://www.leaderinme.org/wp-content/uploads/2019/06/AdobeStock_155566276SM.jpg) no-repeat;
+    background-position: 0% 100%;
+    background-size: cover;  
+    height: 89vh;
+}
+.description .i{
+    font-size: 5rem;  
+    margin-top: 50px;
+    color: #3DB43D;
 }
 .description h1{
     font-size: 3.5rem;
     text-transform: uppercase;
     font-family: cursive;
+    color: #fff;
 }
 .description p{
     font-size: 1.3rem;
     margin-top: 5px;
     text-transform: uppercase;
+    color: #fff;
 }

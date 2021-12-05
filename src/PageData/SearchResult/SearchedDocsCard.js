@@ -6,43 +6,18 @@ import classes from './SearchedDocsCard.module.css';
 const SearchedDocsCard = (props) => {
 
   const [showPopup, setShowPopup] = useState(false);
+  const [viewCount, setViewCount] = useState(props.details.views);
 
   const togglePopup = function () {
     setShowPopup(!showPopup);
   }
+  
+  const setViews = (viewss)=>{
+    setViewCount(viewss);
+  }
 
   return (
     <Fragment>
-      {/* <div className={classes.searched__card}>
-        <div>
-          <span>Title : </span>
-          <span>{props.details.name}</span>
-        </div>
-        <div>
-          <span>Description : </span>
-          <span>{props.details.description}</span>
-        </div>
-        <div>
-          <span>Author : </span>
-          <span>{props.details.postedBy.name}</span>
-        </div>
-        <div>
-          <span>Posted On : </span>
-          <span>{props.details.postedOn}</span>
-        </div>
-        <button className={classes.view_details} onClick={togglePopup}>
-          <Link to={`/home/content/${props.details.id}`}>
-          </Link>
-          View Details
-        </button>
-      </div>
-
-      <div>
-        {
-          showPopup && <ViewPopup details={props.details} togglePopup={togglePopup} />
-        }
-      </div> */}
-
       <article className={classes.card}>
         <div className={classes.card__front}>
           <span className={classes.card__title}>
@@ -50,30 +25,38 @@ const SearchedDocsCard = (props) => {
             <span>{props.details.name}</span>
           </span>
           <span className={classes.card__description}>
+            <span>Subject : </span>
+            <span>{props.details.subject}</span>
+          </span>
+          <span className={classes.card__description}>
             <span>Description : </span>
             <span>{props.details.description}</span>
           </span>
-          <span className={classes.card__description}>
+        </div>
+        <div className={classes.card__back}>
+        <span className={classes.card__info}>
             <span>Title : </span>
             <span>{props.details.name}</span>
           </span>
-        </div>
-        <div className={classes.card__back}>
+          {/* <span className={classes.card__info}>
+            <span>Description : </span>
+            <span>{props.details.description}</span>
+          </span> */}
+          <span className={classes.card__info}>
+            <span>Subject : </span>
+            <span>{props.details.subject}</span>
+          </span>
           <p className={classes.card__info}>
-            <span>Posted On : </span>
-            <span>{props.details.postedOn}</span>
+            <span>Type : </span>
+            <span>{props.details.type}</span>
           </p>
           <p className={classes.card__info}>
             <span>Author : </span>
-            <span>{props.details.postedBy.name}</span>
+            <span>{props.details.username}</span>
           </p>
           <p className={classes.card__info}>
-            <span>Posted On : </span>
-            <span>{props.details.postedOn}</span>
-          </p>
-          <p className={classes.card__info}>
-            <span>Author : </span>
-            <span>{props.details.postedBy.name}</span>
+            <span>Views : </span>
+            <span>{viewCount}</span>
           </p>
           <p>
             <span className={classes.span} onClick={togglePopup}>
@@ -86,7 +69,7 @@ const SearchedDocsCard = (props) => {
       </article>
       <div>
         {
-          showPopup && <ViewPopup details={props.details} togglePopup={togglePopup} />
+          showPopup && <ViewPopup details={props.details} togglePopup={togglePopup} setViews={setViews} />
         }
       </div>
     </Fragment >

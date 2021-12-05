@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ViewPopup from './ViewDocument/ViewPopup';
 import Layout from './UI/Layout';
 import { LoginActions } from './store/login-slice';
+import Login_Register from './Signin/Login_Register';
 
 function App() {
 
@@ -47,12 +48,15 @@ function App() {
         <Route path='/search'>
           <SearchedResult />
         </Route>
-        {<Route path='/profile'>
+        {isLogin && <Route path='/profile'>
           <Profile />
         </Route>}
         <Route path='/home/content/:documentId'>
           <ViewPopup />
         </Route>
+        {!isLogin && <Route path='/signup'>
+          <Login_Register/>
+        </Route>}
         <Route path='*'>
           <Redirect to='/home' />
         </Route>

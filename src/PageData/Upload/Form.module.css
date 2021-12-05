@@ -3,22 +3,31 @@
     flex-direction: row;
     width: 100%;
     box-sizing: border-box;
+       height: 82vh;
 }
 
-.design{
-    width: 75%;
-    background-color: bisque;
+.design img{
+  width: 100%;
+  height: 100%;
 }
 
 .form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    width: 100%;
+    justify-content: center;
+    width: 70%;
     margin: 0 auto;
-    background-color: aqua;
     padding: 50px 35px;
+    margin-right: 0px;
+}
+
+.margina{
+  margin-left: 70px;
+}
+
+.butt{
+  margin-top: 15px;
 }
 
 .div{
@@ -33,6 +42,9 @@
     text-align: right;
     margin-right: 12px;
     display: inline-block;
+    font-weight: 900;
+    color: #262254;
+    font-size: 25px;
 }
 
 .modal_input{

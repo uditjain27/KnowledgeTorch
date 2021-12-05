@@ -10,8 +10,8 @@
 }
 
 .items{
-    padding: 7px;
-    color: rgba(255, 255, 255, 0.6);
+    padding: 7px 5px;
+    color: #9a77cf;
     transition: 0.5s ;
     text-decoration: none;
 }
@@ -26,11 +26,22 @@ a{
     transform: scale(105%);
     text-decoration: none;
 }
+.items:active{
+    color: #fff;
+}
 
-.navbar_list .active{
-    background-color: rgb(150, 57, 57)   ;
+.active{
     border-radius: 5px;
     text-decoration: solid;
-    box-shadow: 0 0 5px 1px #fff;
     border: none;
+    font-size: 30px;/*
+    transform: scale(125%);*/
+}
+
+.active li{
+    color: #fff;
+}
+
+.active .items:hover{
+    transform: scale(100%);
 }

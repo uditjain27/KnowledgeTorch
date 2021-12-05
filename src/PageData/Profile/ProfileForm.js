@@ -1,8 +1,12 @@
+import { ClassSharp } from '@mui/icons-material';
 import React, { Fragment, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation , useHistory} from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import { setProfileData } from '../../store/uploadDetails-ApiCalling';
-import classes from './ProfileForm.module.css';
+import classes from './PF.module.css';
+
+import SaveIcon from '@mui/icons-material/Save';
+import Button from '@mui/material/Button';
 
 const ProfileForm = (props) => {
 
@@ -16,7 +20,7 @@ const ProfileForm = (props) => {
   const courseRef = useRef();
   const yearRef = useRef();
 
-  const submitHandler = async(e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     console.log("Submitteddd");
     const c = contactNoRef.current.value;
@@ -27,7 +31,7 @@ const ProfileForm = (props) => {
       email: props.data.email,
       contactNo: c.toString(),
       college: collegeRef.current.value,
-      course : courseRef.current.value,
+      course: courseRef.current.value,
       year: yearRef.current.value,
       token: token
     };
@@ -38,8 +42,8 @@ const ProfileForm = (props) => {
   }
 
   return (
-    <Fragment>
-      <form onSubmit={submitHandler}>
+    <div className={classes.body}>
+      <form onSubmit={submitHandler} className={classes.form}>
         <div>
           <label id='profile_label'>UserName</label>
           <input
@@ -114,15 +118,19 @@ const ProfileForm = (props) => {
             type='number'
             placeholder='Years in organisation'
             ref={yearRef}
+            min='0'
+            max='6'
             defaultValue={props.data.year ? props.data.year : ''}
           ></input>
         </div>
 
-        <div>
-          <button type='submit'>Save Changes</button>
+        <div style={{width: "100%", display:'flex', alignItems: 'center'}}>
+          <Button type='submit' style={{margin: `50px auto`}} color='secondary' variant="contained" endIcon={<SaveIcon />}>
+            Save Changes
+          </Button>
         </div>
       </form>
-    </Fragment>
+    </div>
   )
 };
 

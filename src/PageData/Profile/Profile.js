@@ -68,7 +68,7 @@ function Profile(props) {
     return (
         <Fragment>
             {/* <header className={classes.header}>User profile</header> */}
-            <section>
+            <section style={{height: "100%"}}>
                 {
                     paramsEdit && <ProfileForm data={data}></ProfileForm>
                 }

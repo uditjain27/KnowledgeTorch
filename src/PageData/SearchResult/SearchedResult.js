@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, useLocation } from "react-router-dom";
 import PreLoader from "../../UI/PreLoader";
@@ -24,7 +24,7 @@ const SearchedResult = (props) => {
     if (vari.get('keyword') !== keyword) {
       dispatch(fetchSearchDetails(vari.get('keyword')));
     }
-  }, []);
+  }, [vari.get('keyword')]);
 
   const details = useSelector((state) => state.searchedDocsStore.list);
   const history = useHistory();
@@ -35,7 +35,7 @@ const SearchedResult = (props) => {
 
 
   return (
-    <Fragment>
+      <div className={classes.full_widthth}>
       {
         isLoading && <PreLoader3></PreLoader3>
       }
@@ -68,7 +68,7 @@ const SearchedResult = (props) => {
           } */}
         </div>
       }
-    </Fragment>
+    </div>
   )
 }
 

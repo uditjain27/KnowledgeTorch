@@ -1,7 +1,14 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { URL } from '../store/helper';
 import classes from './ViewPopup.module.css';
 
 const ViewPopup = (props) => {
+
+  const [views, incrementViews] = useState(props.details.views);
+  const [likes, incrementLikes] = useState(props.details.likes);
+  const isLogin = useSelector((state) => state.loginStore.isLogin);
+  console.log(isLogin);
 
   const viewDoc = () => {
     const id = props.details.id;
@@ -11,6 +18,20 @@ const ViewPopup = (props) => {
     aTag.download = 'abcd.pdf';
     aTag.click();
     aTag.remove();
+    incrementViews(views+1);
+    props.setViews(views+1);
+  }
+
+  const likeDoc = async() =>{
+    const id = props.details.id;
+    const likeURL = `${URL}/notes/${id}/likes`;
+    await fetch(likeURL, {
+      method: 'POST',
+      headers: {
+        'Contect-Type' : 'appplication/json'
+      }
+    });
+    incrementLikes(likes+1);
   }
 
 
@@ -20,7 +41,7 @@ const ViewPopup = (props) => {
       <div className={classes.centerModal}>
 
         <section className={classes.section}>
-          <h2>Notes</h2>
+          <h2>{props.details.type}</h2>
         </section>
         <section className={classes.close__btn} onClick={props.togglePopup}>
           <span>X</span>
@@ -34,54 +55,60 @@ const ViewPopup = (props) => {
             <span>Description : </span>
             <span>
               {props.details.description ? props.details.description : 'Not Available'}
-              </span>
+            </span>
           </div>
           <div>
             <span>Subject : </span>
             <span>{props.details.subject ? props.details.subject : 'NA'}</span>
           </div>
           <div>
-            <span>University : </span>
-            <span>{props.details.university ? props.details.university : 'NA'}</span>
-          </div>
-          <div>
-            <span>Course : </span>
-            <span>{props.details.course ? props.details.course : 'NA'}</span>
-          </div>
-          <div>
-            <span>File Size : </span>
-            <span>{props.details.size ? props.details.size : 'NA'}</span>
-          </div>
-          <div>
             <span>Author : </span>
-            <span>{props.details.postedBy.name ? props.details.postedBy.name : 'NA'}</span>
+            <span>{props.details.username ? props.details.username : 'NA'}</span>
           </div>
           <div>
-            <span>Date : </span>
+            <span>Uploaded On : </span>
             <span>{props.details.postedOn ? props.details.postedOn : 'NA'}</span>
           </div>
           <div>
-            <span>Views : </span>
-            <span>{props.details.viewCount ? props.details.viewCount : 9999}</span>
+            <span>File Size : </span>
+            <span>{props.details.size ? `${props.details.size}KB` : 'NA'}</span>
           </div>
           <div>
+            <span>Likes : </span>
+            <span>{likes ? likes : 0}</span>
+          </div>
+          <div>
+            <span>Views : </span>
+            <span>{views ? views : 0}</span>
+          </div>
+          {/* <div>
             <span>Downloads : </span>
             <span>{props.details.downloadCount ? props.details.downloadCount : 1111}</span>
-          </div>
+          </div> */}
         </section>
 
         <section className={classes.section}>
-          <span className={classes.btn} onClick={props.togglePopup}>
-            <span className={classes.noselect}>Cancel</span>
-            <div className={classes.circle}></div>
-          </span>
-          <span className={classes.btn} onClick={viewDoc}>
-            <span className={classes.noselect}>View</span>
-            <div className={classes.circle}></div>
-          </span>
+          <div>
+            {isLogin &&
+              <span className={classes.btn} onClick={likeDoc}>
+              <span className={classes.noselect}>Like</span>
+              <div className={classes.circle}></div>
+            </span>}
+          </div>
+          <div>
+            <span className={classes.btn} onClick={props.togglePopup}>
+              <span className={classes.noselect}>Cancel</span>
+              <div className={classes.circle}></div>
+            </span>
+            <span className={classes.btn} onClick={viewDoc}>
+              <span className={classes.noselect}>View</span>
+              <div className={classes.circle}></div>
+            </span>
+          </div>
         </section>
       </div>
-    </Fragment>
+      {/*<object data={`http://localhost:5000/notes/${props.details.id}/data`} type="application/pdf" width="600" height="500"></object>
+    */}</Fragment>
   );
 }
 

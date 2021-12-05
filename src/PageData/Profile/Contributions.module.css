@@ -100,10 +100,11 @@
  line-height: 42px;
  padding: 0;
  border: none;
-	right: -300px;
+	right: -250px;
 	letter-spacing: 1px;
   height: 40px;
   width: 200px;
+  text-align: center;
 }
 .btn_modify span {
  position: relative;
@@ -198,18 +199,20 @@
 	letter-spacing: 1px;
 	margin: 10px 0;
   text-transform: capitalize;
+  font-size: 1.25rem;
 }
 
 .course p {
 	letter-spacing: 1px;
 	margin: 10px 0;
+  font-size: 16px;
 }
 
 .course_preview {
 	background-color: #2A265F;
 	color: #fff;
 	padding: 30px;
-	min-width: 15vw;
+	width: 30vw;
 }
 
 .course_info {

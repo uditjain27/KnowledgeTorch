@@ -90,8 +90,18 @@
 
 .section:last-child{
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: flex-start;
+}
+.section:last-child div:first-child{
+  margin-left: -25px;
+  padding: 0;
+}
+.section:last-child div:last-child{
+  width: 100%;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 /*

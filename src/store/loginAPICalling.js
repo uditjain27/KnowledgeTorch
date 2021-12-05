@@ -131,7 +131,7 @@ export const RegisterUser = (data) => {
         })
       ); */
     } catch (error) {
-      console.log(error);
+      alert(error);
       dispatch(UISliceActions.setLoading());
       //alert(error);
       /* dispatch(

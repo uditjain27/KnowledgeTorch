@@ -69,8 +69,8 @@ const ResetPassword = (props) => {
             oldPassw : currPass.current.value
           }
         );
-        //dispatch(LoginActions.setLogout());
-        //history.push('/home');
+        dispatch(LoginActions.setLogout());
+        history.push('/home');
         //ctx.setFormView();
         //ctx.toggleModalView();
       }

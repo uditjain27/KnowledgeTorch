@@ -18,12 +18,15 @@ function NavBar(props) {
     console.log(location.pathname);
 
     const keywordRef = useRef();
+    const formRef = useRef();
 
     const history = useHistory();
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        history.push(`/search?keyword=${keywordRef.current.value}`);
+        const keyw = keywordRef.current.value;
+        formRef.current.reset();
+        history.push(`/search?keyword=${keyw}`);
     }
 
     const ctx = useContext(AuthContext);
@@ -34,12 +37,11 @@ function NavBar(props) {
                 <Modal />}
             <HyperLinks />
             {location.pathname === '/home' ? '' :
-                <div>
-                    <form className={classes.search} onSubmit={submitHandler}>
+                <div className={classes.saerch_bar}>
+                    <form className={classes.search} onSubmit={submitHandler} ref={formRef}>
                         <input className={classes.input_search} type="text" placeholder="Search for documents" ref={keywordRef}></input>
                         <button className={`${classes.btn} ${classes.btn_search}`}>
                             <i className="fas fa-search"></i>
-                            <span>Search</span>
                         </button>
                     </form>
                 </div>}

@@ -1,12 +1,16 @@
 .nav{
-    background-color: #343A40;
-    height: auto;
-    width: auto;
+    background-color: #262254;
+    height: 80px;
+    width: 100%;
     margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1rem;
+    color: #40e5c4;
+    position: fixed;
+    top: 0;
+    z-index: 100;
 }
 
 .style__btn{
@@ -22,7 +26,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 15px;
+    border-radius: 5px;
     border: none;
     transition: 0.5s;
 }
@@ -46,12 +50,12 @@
 .btn_search{
     width: auto;
     border: none;
-    border-radius: 15px;
-    font-size: 16px;
+    border-radius: 5px;
+    font-size: 20px;
     transition: 1s;
     color: black;
-    padding: 10px 5px;
-    background-color: #ddd;
+    padding: 10px 15px;
+    background-color: transparent;
 }
 
 .btn_search span{

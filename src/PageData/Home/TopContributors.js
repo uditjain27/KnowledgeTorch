@@ -30,19 +30,19 @@ const TopContributors = (props) => {
   }, [])
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} id='abcdef'>
       <p className={classes.header}>Top Contributors</p>
       <div className={classes.wrapper}>
         <article className={`${classes.card} ${classes.second}`}>
           <div className={classes.thumb}></div>
           <div className={classes.infos}>
             <h2 className={classes.title}>Shivam Garg</h2>
-            <h3 className={classes.seats}>College Name : {'College Name College Name College Name College'}</h3>
+            <h3 className={classes.seats}>College Name : {'Dr. Akhilesh Das Gupta Institute of Technology & Management'}</h3>
             <h3 className={classes.seats}>Views : {2}</h3>
             <h3 className={`${classes.seats} ${classes.seat}`}>Downloads : {2}</h3>
             <p className={classes.txt}>
               Team Knowledge Torch congratulate
-              <span>{' Shivam Garg '}</span> for getting second highest number of views and downloads in the last month🎉🎉🎉
+              <span>{' Shivam Garg '}</span> for getting second highest number of views and uploads in the last month🎉🎉🎉
             </p>
           </div>
         </article>
@@ -50,12 +50,12 @@ const TopContributors = (props) => {
           <div className={classes.thumb}></div>
           <div className={classes.infos}>
             <h2 className={classes.title}>Udit Jain</h2>
-            <h3 className={classes.seats}>College Name : {'College Name College Name College Name College'}</h3>
+            <h3 className={classes.seats}>College Name : {'Dr. Akhilesh Das Gupta Institute of Technology & Management'}</h3>
             <h3 className={classes.seats}>Views : {2}</h3>
             <h3 className={`${classes.seats} ${classes.seat}`}>Downloads : {2}</h3>
             <p className={classes.txt}>
               Team Knowledge Torch congratulate
-              <span>{' Udit Jain '}</span> for getting highest number of views and downloads in the last month🎉🎉🎉
+              <span>{' Udit Jain '}</span> for getting highest number of views and uploads in the last month🎉🎉🎉
             </p>
           </div>
         </article>
@@ -63,12 +63,12 @@ const TopContributors = (props) => {
           <div className={classes.thumb}></div>
           <div className={classes.infos}>
             <h2 className={classes.title}>Anshul Gupta</h2>
-            <h3 className={classes.seats}>College Name : {'College Name College Name College Name College'}</h3>
+            <h3 className={classes.seats}>College Name : {'Dr. Akhilesh Das Gupta Institute of Technology & Management'}</h3>
             <h3 className={classes.seats}>Views : {2}</h3>
             <h3 className={`${classes.seats} ${classes.seat}`}>Downloads : {2}</h3>
             <p className={classes.txt}>
               Team Knowledge Torch congratulate
-              <span>{' Anshul Gupta '}</span> for getting third highest number of views and downloads in the last month🎉🎉🎉
+              <span>{' Anshul Gupta '}</span> for getting third highest number of views and uploads in the last month🎉🎉🎉
             </p>
           </div>
         </article>

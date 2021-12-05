@@ -6,19 +6,22 @@ import { useHistory } from 'react-router-dom';
 
 function SearchBar(props) {
     const keywordRef = useRef();
+    const formRef = useRef();
 
     const history = useHistory();
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        history.push(`/search?keyword=${keywordRef.current.value}`);
+        const keyw = keywordRef.current.value;
+        formRef.current.reset();
+        history.push(`/search?keyword=${keyw}`);
+        window.location.reload();
     }
     return (
-        <form className={classes.search} onSubmit={submitHandler}>
-            <input className={classes.input_search} type="text" placeholder="Search for documents" ref={keywordRef}></input>
-            <button className={`${classes.btn} ${classes.btn_search}`}>
+        <form className={classes.search} onSubmit={submitHandler} ref={formRef}>
+            <input className={classes.input_search} type="text" placeholder="Search for documents" ref={keywordRef} defaultValue=""></input>
+            <button type="submit" className={`${classes.btn} ${classes.btn_search}`}>
                 <i className="fas fa-search"></i>
-                <span>Search</span>
             </button>
         </form>
     )

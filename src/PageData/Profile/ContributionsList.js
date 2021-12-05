@@ -1,3 +1,4 @@
+import { URL } from '../../store/helper';
 import classes from './Contributions.module.css';
 
 const ContributionsList = (props) => {
@@ -6,7 +7,7 @@ const ContributionsList = (props) => {
       <div className={classes.course}>
         <div className={classes.course_preview}>
           <h6>{props.data.type}</h6>
-          <h2>{props.data.topic}</h2>
+          <h2>{props.data.name}</h2>
           <p>{props.data.description}</p>
         </div>
         <div className={classes.course_info}>
@@ -16,22 +17,22 @@ const ContributionsList = (props) => {
           </div>
           <div className={classes.card__entry}>
             <label className={classes.label}><strong>File Size : </strong></label>
-            <span className={classes.span}>{props.data.fileSize}</span>
+            <span className={classes.span}>{props.data.size}KB</span>
           </div>
           <div className={classes.card__entry}>
             <label className={classes.label}><strong>Posted On : </strong></label>
-            <span className={classes.span}>{props.data.uploadedOn}</span>
+            <span className={classes.span}>{props.data.postedOn}</span>
           </div>
           <div className={classes.card__entry}>
             <label className={classes.label}><strong>View Count : </strong></label>
-            <span className={classes.span}>{props.data.viewCount}</span>
+            <span className={classes.span}>{props.data.views}</span>
           </div>
           <div className={classes.card__entry}>
-            <label className={classes.label}><strong>Download Count : </strong></label>
-            <span className={classes.span}>{props.data.downloadCount}</span>
+            <label className={classes.label}><strong>Likes Count : </strong></label>
+            <span className={classes.span}>{props.data.likes}</span>
           </div>
           <div className={classes.card__entry}>
-            <button className={`${classes.custom_btn} ${classes.btn_modify}`}><span>View Contribution</span></button>
+            <a href={`${URL}/notes/${props.data.id}/data`} className={`${classes.custom_btn} ${classes.btn_modify}`} target='_blank'><span>View Contribution</span></a>
           </div>
         </div>
       </div>

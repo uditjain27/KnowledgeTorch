@@ -2,6 +2,7 @@ import classes from './LoginRegister.module.css';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { LoginActions } from '../../store/login-slice';
+import Button from '@mui/material/Button';
 
 function Logout(props) {
 
@@ -15,9 +16,9 @@ function Logout(props) {
     return (
         <div className='login-register'>
             <Link to='/home'>
-                <button className={classes.btn__login_register} type='button' onClick={logoutHandler}>Logout
+                <Button type='button' onClick={logoutHandler} color="secondary" variant="outlined"  style={{marginRight:"15px"}}>Logout&nbsp;
                     <i class="fa fa-thin fa-power-off"></i>
-                </button>
+                </Button>
             </Link>
         </div>
     )

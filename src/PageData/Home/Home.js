@@ -12,7 +12,6 @@ function Home(props) {
     return (
         <header className={classes.header}>
             <BigLogo></BigLogo>
-            <SearchBar></SearchBar>
             <TopContributors></TopContributors>
         </header>
     )

@@ -23,9 +23,9 @@ const ProfileView = (props) => {
           <div onClick={() => tabToggleHandler('contributions')}
             className={`${classes.tab} ${tab === 'contributions' ? `${classes.active}` : ``}`}
           >My Contributions</div>
-          <div onClick={() => tabToggleHandler('analytics')}
+          {/* <div onClick={() => tabToggleHandler('analytics')}
             className={`${classes.tab} ${tab === 'analytics' ? `${classes.active}` : ``}`}
-          >Analytics</div>
+          >Analytics</div> */}
           <div onClick={() => tabToggleHandler('reset')}
             className={`${classes.tab} ${tab === 'reset' ? `${classes.active}` : ``}`}
           >Reset Password</div>

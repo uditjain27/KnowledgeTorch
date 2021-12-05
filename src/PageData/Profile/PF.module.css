@@ -1,0 +1,50 @@
+.body{
+  background: url(/src/Signin/img/background.png) no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: 88.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #262254;
+}
+
+.form{
+  width: auto;
+  height: auto;
+  margin-top: 50px;
+  background-color: transparent;
+}
+.form div{
+  margin: 18px auto;
+}
+.form label{
+  display: inline-block;
+  width: 250px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.form input{
+  box-sizing: border-box;
+  border: 1px #262254 solid;
+  font-size: 18px;
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 5px 20px;
+  color: #262254;
+  width: 400px;
+}
+
+.form input[readOnly]{
+  border:none;
+  font-size: 21px;
+  padding-left: 0;
+}
+
+.form input:focus{
+  outline: none;
+}
+
