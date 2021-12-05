@@ -1,0 +1,50 @@
+.full_widthh{
+  width: 100%;
+  height: auto;
+  font-size: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 40px 0 50px 0;
+  margin-bottom: -10px;
+}
+
+.full_widthh h1{
+  font-size: 35px;
+color: #262254;
+font-weight: 500;
+}
+
+.section{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 75px;
+}
+
+.card{
+  height: 400px;
+  width: 300px;
+  margin: 0 75px;
+}
+
+.card img{
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.card h2{
+  font-size: 30px;
+  font-weight: 50;
+  text-transform: uppercase;
+}
+
+.card p{
+  font-size: 18px;
+}
+

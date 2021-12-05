@@ -1,0 +1,24 @@
+.jumbotron{
+  width: 100%;
+  background-color: #262254;
+  padding: 50px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.copy{
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.842);
+}
+
+.a{
+  color: black;
+}

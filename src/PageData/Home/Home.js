@@ -6,6 +6,7 @@ import { Fragment } from 'react';
 import SearchedResult from '../SearchResult/SearchedResult';
 import { Route } from 'react-router';
 import TopContributors from './TopContributors';
+import MeetOurTeam from './MeetOurTeam';
 
 
 function Home(props) {
@@ -13,6 +14,7 @@ function Home(props) {
         <header className={classes.header}>
             <BigLogo></BigLogo>
             <TopContributors></TopContributors>
+            <MeetOurTeam></MeetOurTeam>
         </header>
     )
 }
