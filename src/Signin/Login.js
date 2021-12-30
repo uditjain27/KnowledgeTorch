@@ -84,7 +84,7 @@ const Login = (props) => {
     console.log("reducer");
   }
 
-  const f5 = function async(e) {
+  const f5 = function(e) {
     e.preventDefault();
     Dispatch({ type: 'cred' });
     dispatch(LoginUser({

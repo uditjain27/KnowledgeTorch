@@ -40,7 +40,7 @@ const MyProfile = (props) => {
               <div className={classes.bio_entry}>
                 <i className="fa fa-solid fa-graduation-cap"></i>
                 <label>
-                  Course : </label>
+                  Course :</label>
                 <span>{props.data.course}</span>
               </div>
               <div className={classes.bio_entry}>

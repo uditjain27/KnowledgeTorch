@@ -28,43 +28,6 @@ const RequestLogin = async (data) => {
   return d;
 };
 
-/* export const fetchProfileData = () => {
-  return async (dispatch) => {
-    const fetchData = async () => {
-      const response = await fetch(
-        getDataURL
-      );
-
-      if (!response.ok) {
-        throw new Error('Could not fetch users data!');
-      }
-
-      const data = await response.json();
-
-      return data;
-    };
-
-    try {
-      const userData = await fetchData();
-      dispatch(
-        LoginActions.setUserData({
-          name: userData.name,
-          college: userData.college,
-          contactNo: userData.contactNo
-        })
-      );
-    } catch (error) {
-      dispatch(
-        uiActions.showNotification({
-          status: 'error',
-          title: 'Error!',
-          message: 'Fetching cart data failed!',
-        })
-      );
-    }
-  };
-}; */
-
 
 export const RegisterUser = (data) => {
   console.log("register user");
@@ -89,7 +52,7 @@ export const RegisterUser = (data) => {
           body: JSON.stringify({
             username: data.userName,
             password: data.password,
-            name: data.userName,
+            name: 'anonomys',
             email: data.email
           })
         }
@@ -184,6 +147,7 @@ export const LoginUser = (data) => {
         ); */
     } catch (error) {
       console.log(error);
+      alert(error);
       dispatch(UISliceActions.setLoading());
       //alert(error);
       /* dispatch(

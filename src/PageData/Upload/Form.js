@@ -59,7 +59,7 @@ function Form(props) {
             mediaType: media.type,
             file: media,
             subject: subjectRef.current.value,
-            type: "notes",
+            type: "Notes",
             token: token
         }));
         formRef.current.reset();

@@ -1,4 +1,3 @@
-import { database } from "faker";
 import { Fragment, useContext, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";

@@ -13,9 +13,9 @@ const ViewPopup = (props) => {
   const viewDoc = () => {
     const id = props.details.id;
     let aTag = document.createElement("a");
-    aTag.href = `http://localhost:5000/notes/${id}/data`;
+    aTag.href = `${URL}/notes/${id}/data`;
     aTag.target = '_blank';
-    aTag.download = 'abcd.pdf';
+    //aTag.download = 'abcd.pdf';
     aTag.click();
     aTag.remove();
     incrementViews(views+1);

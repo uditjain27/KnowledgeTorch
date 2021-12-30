@@ -5,7 +5,8 @@ import ProfileForm from './ProfileForm';
 import ProfileView from './ProfileView';
 import { URL } from '../../store/helper';
 
-import classes from './ProfileForm.module.css';
+import classes from './ProfileForm.module.css';/* 
+import { fetchProfileData } from '../../store/fetchProfileData'; */
 
 function Profile(props) {
     const token = useSelector((state) => state.loginStore.token);
@@ -34,6 +35,7 @@ function Profile(props) {
     const fetchDataFunc = async (userName) => {
         try {
             const data1 = await fetchData(userName);
+            /* const data1 = await fetchProfileData(userName, token); */
             return data1;
         } catch (e) {
             console.log(e);
@@ -68,7 +70,7 @@ function Profile(props) {
     return (
         <Fragment>
             {/* <header className={classes.header}>User profile</header> */}
-            <section style={{height: "100%"}}>
+            <section style={{ height: "100%" }}>
                 {
                     paramsEdit && <ProfileForm data={data}></ProfileForm>
                 }

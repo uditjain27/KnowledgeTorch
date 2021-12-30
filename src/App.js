@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import Home from './PageData/Home/Home';
-import DashBoard from './PageData/DashBoard/DashBoard';
 import Upload from './PageData/Upload/Upload';
 import Contributor from './PageData/Contributor/Contributor';
 import ContactUs from './PageData/ContactUs/ContactUs';
@@ -13,6 +12,9 @@ import ViewPopup from './ViewDocument/ViewPopup';
 import Layout from './UI/Layout';
 import { LoginActions } from './store/login-slice';
 import Login_Register from './Signin/Login_Register';
+import ReviewPage from './PageData/ReviewPage/ReviewPage';
+import DefaultLayout from './PageData/DashBoard/layout/DefaultLayout';
+
 
 function App() {
 
@@ -33,9 +35,6 @@ function App() {
         <Route path='/home' exact>
           <Home></Home>
         </Route>
-        <Route path='/dashboard'>
-          <DashBoard />
-        </Route>
         <Route path='/uploads'>
           <Upload />
         </Route>
@@ -54,12 +53,21 @@ function App() {
         <Route path='/home/content/:documentId'>
           <ViewPopup />
         </Route>
+        <Route path='/review-admin'>
+          <ReviewPage></ReviewPage>
+        </Route>
         {!isLogin && <Route path='/signup'>
           <Login_Register/>
         </Route>}
-        <Route path='*'>
+        <Route path='/abcd'>
+          <DefaultLayout></DefaultLayout>
+        </Route>
+        <Route path='/' exact>
           <Redirect to='/home' />
         </Route>
+        {/* <Route path='*'>
+          <Redirect to='/home' />
+        </Route> */}
       </Switch>
     </Layout>
   );
