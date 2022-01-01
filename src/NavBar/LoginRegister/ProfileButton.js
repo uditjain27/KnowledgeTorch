@@ -9,7 +9,7 @@ function ProfileButton(props) {
         <div className='login-register'>
             <Link to='/profile'>
                 <Button type='button' color='secondary' variant="contained" style={{marginRight:"15px"}}>
-                    Profile&nbsp; <i class="fa fa-thin fa-user"></i>
+                    Profile&nbsp; <i className="fa fa-thin fa-user"></i>
                 </Button>
                 
             </Link>

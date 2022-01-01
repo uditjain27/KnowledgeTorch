@@ -1,12 +1,8 @@
 import classes from './Home.module.css';
 import BigLogo from './BigLogo';
-import SearchBar from './SearchBar';
-import NavBar from '../../NavBar/NavBar';
-import { Fragment } from 'react';
-import SearchedResult from '../SearchResult/SearchedResult';
-import { Route } from 'react-router';
 import TopContributors from './TopContributors';
 import MeetOurTeam from './MeetOurTeam';
+import GlobalTopic from './GlobalTopic/GlobalTopic';
 
 
 function Home(props) {
@@ -15,6 +11,7 @@ function Home(props) {
             <BigLogo></BigLogo>
             <TopContributors></TopContributors>
             <MeetOurTeam></MeetOurTeam>
+            <GlobalTopic></GlobalTopic>
         </header>
     )
 }

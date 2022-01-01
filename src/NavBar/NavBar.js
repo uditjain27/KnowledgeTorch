@@ -15,8 +15,7 @@ import { useHistory } from 'react-router-dom';
 function NavBar(props) {
     const isLogin = useSelector((state) => state.loginStore.isLogin);
     const location = useLocation();
-    console.log(location.pathname);
-
+    
     const keywordRef = useRef();
     const formRef = useRef();
 

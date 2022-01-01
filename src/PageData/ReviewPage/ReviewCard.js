@@ -1,6 +1,8 @@
 import { Fragment, useState } from "react";
 import { URL } from "../../store/helper";
 
+import classes from './ReviewCard.module.css';
+
 const ReviewCard = function (props) {
   const [showView, setShowView] = useState(true);
 
@@ -35,7 +37,7 @@ const ReviewCard = function (props) {
   }
   return (
     <Fragment>
-      <div>
+      <div className={classes.card}>
         <section>
           <div>
             <span>Title : </span>
@@ -59,19 +61,19 @@ const ReviewCard = function (props) {
           </div>
           <div>
             <span>Size : </span>
-            <span>{props.details.size}</span>
+            <span>{props.details.size} KB</span>
           </div>
         </section>
         {
-          showView && <section>
-            <button onClick={onCLick}>View</button>
+          showView && <section className={classes.section}>
+            <button className={classes.button} onClick={onCLick}>View</button>
           </section>
         }
         {
           !showView && <section>
-            <button onClick={() => {setStatus(true)}}>Approve</button>
-            <button onClick={() => {setStatus(false)}}>Reject</button>
-            <button>On Hold</button>
+            <button className={classes.button} onClick={() => {setStatus(true)}}>Approve</button>
+            <button className={classes.button} onClick={() => {setStatus(false)}}>Reject</button>
+            <button className={classes.button}>On Hold</button>
           </section>
         }
       </div>

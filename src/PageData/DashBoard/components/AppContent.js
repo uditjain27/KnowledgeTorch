@@ -4,14 +4,13 @@ import { CContainer, CSpinner } from '@coreui/react'
 
 // routes config
 import routes from '../routes'
-import AllUsers from '../views/users/AllUsers'
 
 const AppContent = () => {
   return (
     <CContainer lg>
       <Suspense fallback={<CSpinner color="primary" />}>
         <Switch>
-          {/* {routes.map((route, idx) => {
+          {routes.map((route, idx) => {
             return (
               route.component && (
                 <Route
@@ -27,11 +26,8 @@ const AppContent = () => {
                 />
               )
             )
-          })} */}
-          <Route path='/allUsers'>
-            <AllUsers/>
-          </Route>
-          <Redirect from="/abcd" to="/allUsers"></Redirect>
+          })}
+          <Redirect from="/dashboard" to="/dashboard/main"></Redirect>
         </Switch>
       </Suspense>
     </CContainer>

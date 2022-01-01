@@ -3,10 +3,9 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import ProfileForm from './ProfileForm';
 import ProfileView from './ProfileView';
-import { URL } from '../../store/helper';
 
-import classes from './ProfileForm.module.css';/* 
-import { fetchProfileData } from '../../store/fetchProfileData'; */
+import classes from './ProfileForm.module.css';
+import { fetchProfileData } from '../../store/fetchProfileData';
 
 function Profile(props) {
     const token = useSelector((state) => state.loginStore.token);
@@ -16,26 +15,10 @@ function Profile(props) {
     const paramsEdit = vari.get('edit');
     const [data, setData] = useState({});
 
-    const fetchData = async (userName) => {
-        const response = await fetch(`${URL}/users/${userName}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
-            }
-        });
-        if (!response.ok) {
-            throw new Error("ANCD");
-        }
-
-        const data1 = await response.json();
-        return data1;
-    }
-
+    
     const fetchDataFunc = async (userName) => {
         try {
-            const data1 = await fetchData(userName);
-            /* const data1 = await fetchProfileData(userName, token); */
+            const data1 = await fetchProfileData(userName, token);
             return data1;
         } catch (e) {
             console.log(e);

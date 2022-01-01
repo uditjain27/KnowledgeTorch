@@ -2,6 +2,9 @@ import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendUploadData } from '../../store/uploadDetails-ApiCalling';
 import classes from './Form.module.css';
+import { CFormInput } from '@coreui/react';
+
+import '../DashBoard/scss/style.scss';
 import img from '../../Signin/img/MicrosoftTeams-image.png'
 
 import Button from '@mui/material/Button';
@@ -33,12 +36,7 @@ function Form(props) {
         type: 'text',
         ref: subjectRef
     },
-    {
-        id: 'd',
-        title: '',
-        type: 'file',
-        ref: mediaRef,
-    }];
+    ];
 
 
     const fileSubmitHandler = (e) => {
@@ -80,23 +78,18 @@ function Form(props) {
                             placeholder={field.title.split(':')[0]} ref={field.ref} required autoComplete='off'></input>
                     </div>
                 )}
-                {/* <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <defs>
-                    <filter id="gooey">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-                        <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                                       result="highContrastGraphic"/>
-                        <feComposite in="SourceGraphic" in2="highContrastGraphic" operator="atop"/>
-                    </filter>
-                </defs>
-            </svg> */}
+                <div className="use_coreui_css">
+                    <div className='mb-6 xl-3 lg-5'>
+                    <CFormInput type="file" id="formFile" ref={mediaRef} required autoComplete='off' />
+                    </div>
+                </div>
                 <div className={classes.butt}>
                     <Button type='submit' color='secondary' variant="contained" className={classes.margina} size='large'>
                         Submit&nbsp;&nbsp; <i className="fa fa-thin fa-upload"></i>
                     </Button>
-                    <div style={{marginLeft:"120px", display: 'inline-block'}}>
+                    <div style={{ marginLeft: "120px", display: 'inline-block' }}>
                         <Button type='button' color="info" variant="contained" className={classes.margina} size='large' onClick={resetForm}>Reset&nbsp;&nbsp;
-                            <i class="fas fa-undo-alt"></i>
+                            <i className="fas fa-undo-alt"></i>
                         </Button>
                     </div>
                 </div>

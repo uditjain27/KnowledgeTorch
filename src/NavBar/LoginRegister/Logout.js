@@ -17,7 +17,7 @@ function Logout(props) {
         <div className='login-register'>
             <Link to='/home'>
                 <Button type='button' onClick={logoutHandler} color="secondary" variant="outlined"  style={{marginRight:"15px"}}>Logout&nbsp;
-                    <i class="fa fa-thin fa-power-off"></i>
+                    <i className="fa fa-thin fa-power-off"></i>
                 </Button>
             </Link>
         </div>

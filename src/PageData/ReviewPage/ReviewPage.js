@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { URL } from "../../store/helper";
 import ReviewCard from "./ReviewCard";
+import classes from './ReviewCard.module.css';
 
 const ReviewPage = function (props) {
 
@@ -31,7 +32,7 @@ const ReviewPage = function (props) {
     id: '2',
     name: 'name',
     subject: 'sub',
-    description: 'des',
+    description: 'des des des des des des',
     username: 'user',
     postedOn: 'today',
     size: '00'
@@ -48,9 +49,9 @@ const ReviewPage = function (props) {
   ];
 
   const deleteRecord = (id) => {
-    setDetails(details.filter((ele) => {return ele.id !== id}));
+    setDetails(details.filter((ele) => { return ele.id !== id }));
   }
-  
+
   useEffect(() => {
     setDetails(sampleData);
     //async fetchData();
@@ -58,16 +59,19 @@ const ReviewPage = function (props) {
 
   const reloadPage = () => {
     //reload page;
+    window.location.reload();
   }
   return (
-    <Fragment>
-      <button onClick={reloadPage}></button>
-      {
-        details.length === 0 ?
-          <div>No resource to review</div> :
-          (details.map((ele) => { return <ReviewCard key={ele.id} details = {ele}  deleteRecord={deleteRecord} /> }))
-      }
-    </Fragment>
+    <div className={classes.page}>
+      <button className={classes.reloadButton} onClick={reloadPage}>Refresh 🔄</button>
+      <div className={classes.sec}>
+        {
+          details.length === 0 ?
+            <div>No resource to review</div> :
+            (details.map((ele) => { return <ReviewCard key={ele.id} details={ele} deleteRecord={deleteRecord} /> }))
+        }
+      </div>
+    </div>
   );
 }
 

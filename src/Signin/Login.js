@@ -12,6 +12,7 @@ const Login = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const isLogin = useSelector((state) => state.loginStore.isLogin);
+  const role = useSelector((state) => state.loginStore.role);
 
   const isLoading = useSelector((state) => state.uiStore.isLoading);
 
@@ -43,7 +44,6 @@ const Login = (props) => {
         }
       }
       if (!state.userErrorState && !state.passErrorState) {
-        props.toggleModalView();
         return state;
       }
     }
@@ -84,14 +84,24 @@ const Login = (props) => {
     console.log("reducer");
   }
 
-  const f5 = function(e) {
+  const f5 =  async function(e) {
     e.preventDefault();
     Dispatch({ type: 'cred' });
     dispatch(LoginUser({
       userName: userRef.current.value,
       password: passRef.current.value,
     }));
-    history.replace('/home');
+    console.log(role);
+    /* setTimeout(() => {
+      role && console.log(role.split(','));
+      role && console.log(role.split(',').includes(ele => ele === 'ROLE_USER'));
+      /* console.log(role.split(',').find(e => e === 'ROLE_USER')); */
+      /* if(role === 'ROLE_ADMIN'){
+        history.replace('/dashboard');
+      }else{
+        history.replace('/home');
+      } 
+    } , 4000); */
   }
 
 
@@ -99,12 +109,12 @@ const Login = (props) => {
     <form action="#" className={classes.sign_in_form} onSubmit={f5}>
       <h2 className={classes.title}>Sign in</h2>
       <div className={classes.input_field}>
-        <i class="fas fa-user"></i>
+        <i className="fas fa-user"></i>
         <input type="text" placeholder="Username" ref={userRef} />
       </div>
       {reducer.userErrorState && <div>{reducer.userErrorMsg}</div>}
       <div className={classes.input_field}>
-        <i class="fas fa-lock"></i>
+        <i className="fas fa-lock"></i>
         <input type="password" placeholder="Password" ref={passRef} />
       </div>
       {reducer.passErrorState && <div>{reducer.passErrorMsg}</div>}
@@ -113,16 +123,16 @@ const Login = (props) => {
       <p className={classes.social_text}>Or Sign in with social platforms</p>
       <div className={classes.social_media}>
         <a href="#" className={classes.social_icon}>
-          <i class="fab fa-facebook-f"></i>
+          <i className="fab fa-facebook-f"></i>
         </a>
         <a href="#" className={classes.social_icon}>
-          <i class="fab fa-twitter"></i>
+          <i className="fab fa-twitter"></i>
         </a>
         <a href="#" className={classes.social_icon}>
-          <i class="fab fa-google"></i>
+          <i className="fab fa-google"></i>
         </a>
         <a href="#" className={classes.social_icon}>
-          <i class="fab fa-linkedin-in"></i>
+          <i className="fab fa-linkedin-in"></i>
         </a>
       </div>
     </form>

@@ -23,13 +23,13 @@ const _nav = [
   {
     component: CNavItem,
     name: 'All Users',
-    to: '/allUsers',
+    to: '/dashboard/allUsers',
     icon: <i className="fas fa-users" style={{padding: '0 7px', fontSize: '20px', marginRight: '15px'}}></i>,
   },
   {
     component: CNavItem,
     name: 'Create new user',
-    to: '/createNewUser',
+    to: '/dashboard/createNewUser',
     icon: <i className="fas fa-user-plus" style={{padding: '0 7px', fontSize: '20px', marginRight: '15px'}}></i>,
   },
   {
@@ -39,12 +39,12 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Review Resources',
-    to: '/theme/typography',
+    to: '/dashboard/review',
     icon: <i className="far fa-file-pdf" style={{padding: '0 7px', fontSize: '20px', marginRight: '15px'}}></i>,
   },{
     component: CNavItem,
     name: 'Global Topics',
-    to: '/theme/colors',
+    to: '/dashboard/global',
     icon: <i className="fas fa-globe-asia" style={{padding: '0 7px', fontSize: '20px', marginRight: '15px'}}></i>,
   },
 ]

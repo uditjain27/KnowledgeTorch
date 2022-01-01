@@ -19,15 +19,15 @@ import DefaultLayout from './PageData/DashBoard/layout/DefaultLayout';
 function App() {
 
   const isLogin = useSelector((state) => state.loginStore.isLogin);
+  const role = useSelector((state) => state.loginStore.role);
   const dispatch = useDispatch();
   const data = JSON.parse(localStorage.getItem("credentials"));
-  console.log(data);
 
-  useEffect(()=>{
-    if(data){
+  useEffect(() => {
+    if (data) {
       dispatch(LoginActions.setIsLogin(data));
     }
-  },[]);
+  }, []);
 
   return (
     <Layout>
@@ -57,9 +57,9 @@ function App() {
           <ReviewPage></ReviewPage>
         </Route>
         {!isLogin && <Route path='/signup'>
-          <Login_Register/>
+          <Login_Register />
         </Route>}
-        <Route path='/abcd'>
+        <Route path='/dashboard'>
           <DefaultLayout></DefaultLayout>
         </Route>
         <Route path='/' exact>
@@ -68,6 +68,9 @@ function App() {
         {/* <Route path='*'>
           <Redirect to='/home' />
         </Route> */}
+        {
+          isLogin && (role.split(',').includes('ROLE_ADMIN') ? <Redirect to='/dashboard' /> : <Redirect to='/home' />)
+        }
       </Switch>
     </Layout>
   );

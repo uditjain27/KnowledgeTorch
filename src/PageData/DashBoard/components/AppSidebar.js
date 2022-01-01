@@ -11,6 +11,7 @@ import 'simplebar/dist/simplebar.min.css'
 
 // sidebar nav config
 import navigation from '../_nav'
+import { Link } from 'react-router-dom'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
@@ -28,7 +29,7 @@ const AppSidebar = () => {
     >
       <CSidebarBrand className="d-none d-md-flex" to="/" style={{padding: '5px 0'}}>
         {/* <CIcon icon={logoNegative} height={35} /> */}
-        <div>
+        <Link to='/home' style={{textDecoration: 'none', color: '#E4E6E9', margin: '12px 0'}}>
           <div className="sidebar-brand-full" style={{ fontSize: '25px' }}>
             Knowledge
           </div>
@@ -41,7 +42,7 @@ const AppSidebar = () => {
             className={`fas fa-book-open sidebar-brand-narrow`}
             style={{ fontSize: '30px'}}
           />
-        </div>
+        </Link>
         {/*<CIcon className="sidebar-brand-narrow" icon={sygnet} /> */}
       </CSidebarBrand>
       <CSidebarNav>

@@ -7,18 +7,21 @@ const loginSlice = createSlice({
         isLogin: false,
         token: '',
         userName: '',
-        setLocalStorage: ''
+        role : '',
     },
     reducers: {
         setIsLogin: function (state, action) {
             state.isLogin = true;
             state.token = action.payload.token;
             state.userName = action.payload.userName;
+            state.role = action.payload.role;
         },
 
         setLogout: function (state, action) {
             state.isLogin = false;
             state.token = '';
+            state.userName = '';
+            state.role = '';
         }
     }
 });

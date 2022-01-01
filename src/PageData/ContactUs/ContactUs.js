@@ -104,7 +104,7 @@ function ContactUs(props) {
                         <span className="circle one"></span>
                         <span className="circle two"></span>
 
-                        <form action="index.html" autocomplete="off" className="form_form">
+                        <form action="index.html" className="form_form" autoComplete='off'>
                             <h3 className="title">Contact us</h3>
                             <div className={`input_container ${input1 ? 'focus' : ''}`}>
                                 <input
@@ -115,28 +115,28 @@ function ContactUs(props) {
                                     onFocus={focusFunc1}
                                     onBlur={blurFunc1}
                                 />
-                                <label for="">Username</label>
+                                <label htmlFor="">Username</label>
                                 <span>Username</span>
                             </div>
                             <div className={`input_container ${input2 ? 'focus' : ''}`}>
                                 <input type="email" name="email" className="input" ref={input2Ref}
                                     onFocus={focusFunc2}
                                     onBlur={blurFunc2} />
-                                <label for="">Email</label>
+                                <label htmlFor="">Email</label>
                                 <span>Email</span>
                             </div>
                             <div className={`input_container ${input3 ? 'focus' : ''}`}>
                                 <input type="tel" name="phone" className="input" ref={input3Ref}
                                     onFocus={focusFunc3}
                                     onBlur={blurFunc3} />
-                                <label for="">Phone</label>
+                                <label htmlFor="">Phone</label>
                                 <span>Phone</span>
                             </div>
                             <div className={`input_container textarea ${input4 ? 'focus' : ''}`}>
                                 <textarea name="message" className="input" ref={input4Ref}
                                     onFocus={focusFunc4}
                                     onBlur={blurFunc4}></textarea>
-                                <label for="">Message</label>
+                                <label htmlFor="">Message</label>
                                 <span>Message</span>
                             </div>
                             <input type="submit" value="Send" className="btn" />

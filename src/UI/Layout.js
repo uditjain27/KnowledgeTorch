@@ -7,15 +7,19 @@ import ChatBot from "./ChatBot/ChatBot";
 
 const Layout = function (props) {
   const location = useLocation();
-  console.log(location);
+  var loc = 'aaaa';
+  if (location?.pathname) {
+    loc = location.pathname.split('/')[1];
+    console.log(loc);
+  }
   return (
     <Fragment>
-      {location.pathname === '/signup' ? '' : <NavBar/>}
-      <main style={{marginTop: '80px', height: '100%', marginBottom:'-20px'}}>
+      {(loc === 'signup' || loc === 'dashboard') ? '' : <NavBar />}
+      <main style={{ marginTop: `${loc === 'dashboard' ? '0' : '80'}px`, height: '100%', marginBottom: '-20px' }}>
         {props.children}
       </main>
-      {location.pathname === '/signup' ? '' : <Footer></Footer>}
-        <ChatBot />
+      {(loc === 'signup' || loc === 'dashboard') ? '' : <Footer></Footer>}
+      <ChatBot />
       <BTT></BTT>
     </Fragment>
   )

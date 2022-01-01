@@ -185,22 +185,22 @@ const Register = () => {
         <form className={classes.sign_up_form} onSubmit={f5}>
             <h2 className={classes.title}>Sign up</h2>
             <div className={classes.input_field}>
-                <i class="fas fa-user"></i>
+                <i className="fas fa-user"></i>
                 <input type="text" placeholder="Username" ref={userRef} onFocus={f1} onBlur={f2} />
             </div>
             {reducer.userErrorState && <div className={classes.error}>{reducer.userErrorMsg}</div>}
             <div className={classes.input_field}>
-                <i class="fas fa-envelope"></i>
+                <i className="fas fa-envelope"></i>
                 <input type="email" placeholder="Email" ref={emailRef} onFocus={() => Dispatch({ type: 'remove', feild: 'email' })} onBlur={() => Dispatch({ type: 'validate', feild: 'email' })} />
             </div>
             {reducer.emailErrorState && <div className={classes.error}>{reducer.emailErrorMsg}</div>}
             <div className={classes.input_field}>
-                <i class="fas fa-lock"></i>
+                <i className="fas fa-lock"></i>
                 <input type="password" placeholder="Password" ref={passRef} onFocus={f3} onBlur={f4} minLength='8' />
             </div>
             {reducer.passErrorState && <div className={classes.error}>{reducer.passErrorMsg}</div>}
             <div className={classes.input_field}>
-                <i class="fas fa-lock"></i>
+                <i className="fas fa-lock"></i>
                 <input type="password" minLength='8' placeholder="Re-Enter Password" ref={rePassRef} onFocus={() => Dispatch({ type: 'remove', feild: 'repass' })} onBlur={() => Dispatch({ type: 'validate', feild: 'repass' })} />
             </div>
             {reducer.rePassErrorState && <div className={classes.error}>{reducer.rePassErrorMsg}</div>}
@@ -208,16 +208,16 @@ const Register = () => {
             <p className={classes.social_text}>Or Sign up with social platforms</p>
             <div className={classes.social_media}>
                 <a href="#" className={classes.social_icon}>
-                    <i class="fab fa-facebook-f"></i>
+                    <i className="fab fa-facebook-f"></i>
                 </a>
                 <a href="#" className={classes.social_icon}>
-                    <i class="fab fa-twitter"></i>
+                    <i className="fab fa-twitter"></i>
                 </a>
                 <a href="#" className={classes.social_icon}>
-                    <i class="fab fa-google"></i>
+                    <i className="fab fa-google"></i>
                 </a>
                 <a href="#" className={classes.social_icon}>
-                    <i class="fab fa-linkedin-in"></i>
+                    <i className="fab fa-linkedin-in"></i>
                 </a>
             </div>
         </form>

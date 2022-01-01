@@ -20,90 +20,78 @@ import {
   cifIn,
   cilPeople,
 } from '@coreui/icons'
+import { URL } from '../../../../store/helper'
+import { useSelector } from 'react-redux'
 
 const avatar = 'https://freesvg.org/img/abstract-user-flat-4.png'
 
 const AllUsers = () => {
 
   const [userData, setUserData] = useState([]);
+  const token = useSelector((state) => state.loginStore.token);
 
-  const fetchData =async function(pageNo){
-    const response = await fetch('',{});
-    
+  const fetchData = async function (pageNo = 1) {
+    try {
+      const response = await fetch(`${URL}/users?pageSize=10&pageNo=${pageNo}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error("unable to fetch users list");
+      }
+
+      const data = await response.json();
+      data.content.forEach(element => {
+        var newDate = new Date(element.lastLoggedIn);
+        var year = newDate.getFullYear();
+        var month = newDate.getMonth() + 1;
+        var dt = newDate.getDate();
+
+        if (dt < 10) {
+          dt = '0' + dt;
+        }
+        if (month < 10) {
+          month = '0' + month;
+        }
+
+        element.lastLoggedIn = dt + '-' + month + '-' + year;
+
+        newDate = new Date(element.createdDate);
+        year = newDate.getFullYear();
+        month = newDate.getMonth() + 1;
+        dt = newDate.getDate();
+
+        if (dt < 10) {
+          dt = '0' + dt;
+        }
+        if (month < 10) {
+          month = '0' + month;
+        }
+
+        element.createdDate = dt + '-' + month + '-' + year;
+        var role = element.roles.split(',');
+        if(role.includes('ROLE_ADMIN')){
+          element.role = 'ADMIN';
+        }else if(role.includes('ROLE_USER')){
+          element.role = 'USER';
+        }
+      });
+      setUserData(data.content);
+      return data;
+    }catch(error){
+      alert(error);
+    }
   };
 
   useEffect(() => {
-    //const data = await fetchData();
-  },[]);
-  
-  const tableExample = [
-    {
-      user: {
-        name: 'Yiorgos Avraamu',
-        role: 'student',
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'IND', flag: cifIn },
-      organisation: 'Dr. Akhilesh Das Gupta Institute of TEchnology and Management',
-      specialization: 'Btech',
-      activity: '10 sec ago',
-    },
-    {
-      user: {
-        name: 'Yiorgos Avraamu',
-        role: 'student',
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'IND', flag: cifIn },
-      organisation: 'Dr. Akhilesh Das Gupta Institute of TEchnology and Management',
-      specialization: 'Btech',
-      activity: '10 sec ago',
-    },
-    {
-      user: {
-        name: 'Yiorgos Avraamu',
-        role: 'student',
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'IND', flag: cifIn },
-      organisation: 'Dr. Akhilesh Das Gupta Institute of TEchnology and Management',
-      specialization: 'Btech',
-      activity: '10 sec ago',
-    },
-    {
-      user: {
-        name: 'Yiorgos Avraamu',
-        role: 'student',
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'IND', flag: cifIn },
-      organisation: 'Dr. Akhilesh Das Gupta Institute of TEchnology and Management',
-      specialization: 'Btech',
-      activity: '10 sec ago',
-    },
-    {
-      user: {
-        name: 'Yiorgos Avraamu',
-        role: 'student',
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'IND', flag: cifIn },
-      organisation: 'Dr. Akhilesh Das Gupta Institute of TEchnology and Management',
-      specialization: 'Btech',
-      activity: '10 sec ago',
-    },
-    {
-      user: {
-        name: 'Yiorgos Avraamu',
-        role: 'student',
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'IND', flag: cifIn },
-      organisation: 'Dr. Akhilesh Das Gupta Institute of TEchnology and Management',
-      specialization: 'Btech',
-      activity: '10 sec ago',
-    }
-  ]
+    const data = fetchData();
+    console.log(userData);
+  }, []);
+
 
   return (
     <>
@@ -116,7 +104,7 @@ const AllUsers = () => {
                 <CTableHead color="light">
                   <CTableRow>
                     <CTableHeaderCell className="text-center">
-                      <CIcon icon={cilPeople} />
+                      UserName
                     </CTableHeaderCell>
                     <CTableHeaderCell>User</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Country</CTableHeaderCell>
@@ -128,41 +116,35 @@ const AllUsers = () => {
 
                 {/* Body of table */}
                 <CTableBody>
-                  {tableExample.map((item, index) => (
+                  {userData.length !== 0 ? userData.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
-                        <CAvatar size="sm" src='https://freesvg.org/img/abstract-user-flat-4.png' status='success' />
+                        <div className="small text-medium-emphasis">{item?.username}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{item.user.name}</div>
+                        <div>{item?.name}</div>
                         <div className="small text-medium-emphasis">
-                          <span>{item.user.role}</span> | Registered:{' '}
-                          {item.user.registered}
+                          <span>{item?.role}</span> | Registered:{' '}
+                          {item?.createdDate}
                         </div>
+                        <div>{item?.email}</div>
                       </CTableDataCell>
                       <CTableDataCell className="text-center">
-                        <CIcon size="xl" icon={item.country.flag} title={item.country.name} />
+                        <CIcon size="xl" icon={cifIn} title='IND' />
+                      </CTableDataCell>
+                      <CTableDataCell className="text-center">
+                        <div className="small text-medium-emphasis">{item?.organization}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div className="clearfix">
-                          <div className="float-start">
-                            <strong>{item.usage.value}%</strong>
-                          </div>
-                          <div className="float-end">
-                            <small className="text-medium-emphasis">{item.usage.period}</small>
-                          </div>
-                        </div>
-                        <CProgress thin color={item.usage.color} value={item.usage.value} />
-                      </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        <CIcon size="xl" icon={item.specialization.icon} />
+                        <div>{item?.specialization}</div>
                       </CTableDataCell>
                       <CTableDataCell>
                         <div className="small text-medium-emphasis">Last login</div>
-                        <strong>{item.activity}</strong>
+                        <strong>{(item.lastLoggedIn)}</strong>
                       </CTableDataCell>
                     </CTableRow>
-                  ))}
+                  ))
+                    : ''}
                 </CTableBody>
               </CTable>
             </CCardBody>
