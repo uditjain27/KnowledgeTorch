@@ -1,0 +1,21 @@
+.wrapper{
+  height: 100%;
+  box-sizing: border-box;
+  padding: 40px 25px;
+}
+
+.button{
+  padding: 8px 15px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 0.863);
+  background-color: #0288D1;
+  min-width: 12rem;
+  margin-right: 20px;
+}
+
+.floatRight{
+  float: right;
+}

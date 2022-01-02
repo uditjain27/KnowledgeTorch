@@ -143,6 +143,15 @@ const Register = () => {
         rePassErrorMsg: "Password doesn't match"
     });
 
+    const funct = function(emailid, username, pass){
+        Dispatch({ type: 'cred' });
+        dispatch(RegisterUser({
+            email: emailid,
+            userName: username,
+            password: pass,
+        }));
+    }
+
 
     const f1 = function () {
         Dispatch({ type: 'remove', feild: 'user' });
@@ -170,12 +179,7 @@ const Register = () => {
         const username = userRef.current.value;
         const emailid = emailRef.current.value;
         const pass = passRef.current.value;
-        Dispatch({ type: 'cred' });
-        dispatch(RegisterUser({
-            email: emailid,
-            userName: username,
-            password: pass,
-        }));
+        funct(emailid, username, pass);
         console.log(username, emailid);
         history.push(`/home`);//?edit=${true}&user=${username}&email=${emailid}
         console.log(username, emailid);

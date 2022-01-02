@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Analytics from "./Analytics";
 import MyContributions from "./MyContributions";
 import MyProfile from "./MyProfile";
 import ResetPassword from "./ResetPassword";
 
 import classes from './ProfileForm.module.css';
+import GlobalTopic from "./GlobalTopic/GlobalTopic";
 
 const ProfileView = (props) => {
   const [tab, setTab] = useState('profile');
@@ -23,9 +23,9 @@ const ProfileView = (props) => {
           <div onClick={() => tabToggleHandler('contributions')}
             className={`${classes.tab} ${tab === 'contributions' ? `${classes.active}` : ``}`}
           >My Contributions</div>
-          {/* <div onClick={() => tabToggleHandler('analytics')}
-            className={`${classes.tab} ${tab === 'analytics' ? `${classes.active}` : ``}`}
-          >Analytics</div> */}
+          <div onClick={() => tabToggleHandler('repository')}
+            className={`${classes.tab} ${tab === 'repository' ? `${classes.active}` : ``}`}
+          >Global Topic</div>
           <div onClick={() => tabToggleHandler('reset')}
             className={`${classes.tab} ${tab === 'reset' ? `${classes.active}` : ``}`}
           >Reset Password</div>
@@ -34,7 +34,7 @@ const ProfileView = (props) => {
         <section className={classes.section__right}>
           {tab === 'profile' ? <MyProfile data={props.data} /> : ''}
           {tab === 'contributions' ? <MyContributions user={props.data.userName} /> : ''}
-          {tab === 'analytics' ? <Analytics /> : ''}
+          {tab === 'repository' ? <GlobalTopic /> : ''}
           {tab === 'reset' ? <ResetPassword user={props.data.userName} /> : ''}
         </section>
       </main>

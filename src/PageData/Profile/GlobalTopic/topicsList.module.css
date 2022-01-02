@@ -1,0 +1,108 @@
+.listLayout{
+  margin-top: 3rem;
+  margin-right: 2.5rem;
+  background-color: rgb(226, 226, 226);
+  border: 1px #000 solid;
+}
+
+.heading{
+  border-bottom: .5px #000 double;
+  padding: 15px 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.list_item{
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.list_item span{
+  width: 200px;
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.list_item span:first-child{
+  width: 190px;
+  margin-left: 100px;
+}
+
+.list_item span:last-child{
+  width: 100px;
+  margin-left: 80px;
+}
+
+.list_item:nth-child(odd){
+  background-color: #2A265F;
+  color: #fff;
+}
+
+.list_item:nth-child(even){
+  color: #2A265F;
+  background-color: #fff;
+}
+
+.allList_item{
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.allList_item span{
+  width: 130px;
+  margin: 0 25px 0 0;
+  display: inline-block;
+}
+
+.allList_item span:first-child{
+  width: 150px;
+  margin-left: 100px;
+}
+
+.allList_item span:last-child{
+  width: 100px;
+  margin-left: 80px;
+}
+
+.allList_item:nth-child(odd){
+  background-color: #2A265F;
+  color: #fff;
+}
+
+.allList_item:nth-child(even){
+  color: #2A265F;
+  background-color: #fff;
+}
+
+.expand{
+  background-color: rgb(231, 231, 231);
+  box-sizing: border-box;
+  padding: 30px 50px;
+  border-top: 2px #000 dashed;
+}
+
+.description{
+  display: inline;
+  font-weight: 500;
+}
+
+.redirect{
+  float: right;
+  padding: 5px 15px;
+  font-size: 18px;
+  font-style: italic;
+  background-color: blue;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+}
+
+.noContent{
+  margin-top: 120px;
+  text-align: center;
+  font-size: 22px;
+}

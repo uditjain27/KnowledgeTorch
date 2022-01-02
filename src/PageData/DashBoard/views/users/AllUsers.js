@@ -1,12 +1,10 @@
 import React, { lazy, useEffect, useState } from 'react'
 
 import {
-  CAvatar,
   CCard,
   CCardBody,
   CCardHeader,
   CCol,
-  CProgress,
   CRow,
   CTable,
   CTableBody,
@@ -18,8 +16,8 @@ import {
 import CIcon from '@coreui/icons-react'
 import {
   cifIn,
-  cilPeople,
 } from '@coreui/icons'
+
 import { URL } from '../../../../store/helper'
 import { useSelector } from 'react-redux'
 

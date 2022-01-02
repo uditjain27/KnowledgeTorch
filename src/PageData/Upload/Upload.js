@@ -1,17 +1,20 @@
-import { Fragment, useContext } from 'react';
-import { Provider, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
-import AddVertical from '../../Add/AddVertical';
-import NavBar from '../../NavBar/NavBar';
+import { useContext } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../store/login-context';
-import store from '../../store/login-store';
 import Form from './Form';
 import classes from'./Upload.module.css';
 
 function Upload(props) {
-
-    const ctx = useContext(AuthContext);
+/* 
+    const ctx = useContext(AuthContext); */
     const history = useHistory();
+    const location = useLocation();
+    const vari = new URLSearchParams(location.search);
+    const paramsId = vari.get('id');
+    const paramsSubject = vari.get('subject');
+    console.log(paramsId);
+    console.log(paramsSubject);
 
     const showLogin = function () {
         history.push('/signup');
@@ -28,7 +31,7 @@ function Upload(props) {
                         <span>Login to view your contributions</span>
                     </Link>
                 </div>}
-                {isLogin && <Form></Form>}
+                {isLogin && <Form id={paramsId} subject={paramsSubject}></Form>}
             </div>
         </section>
     );

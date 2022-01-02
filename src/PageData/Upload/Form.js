@@ -8,6 +8,7 @@ import '../DashBoard/scss/style.scss';
 import img from '../../Signin/img/MicrosoftTeams-image.png'
 
 import Button from '@mui/material/Button';
+import { URL } from '../../store/helper';
 
 function Form(props) {
 
@@ -30,13 +31,37 @@ function Form(props) {
         title: 'Description : ',
         type: 'text',
         ref: descriptionRef
-    }, {
-        id: 'c',
-        title: 'Subject : ',
-        type: 'text',
-        ref: subjectRef
-    },
+    }
     ];
+
+    const sendGlobalTopicContri = async (data) => {
+        try {
+            const response = await fetch(`${URL}/topics/${props.id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + data.token
+                },
+                body: JSON.stringify(
+                    {
+                        description: data.description,
+                        mediaType: data.mediaType,
+                        name: data.name,
+                        subject: data.subject,
+                        type: data.type,
+                        globalId: data.globalId
+                    }
+                )
+            });
+
+            if(!response.ok){
+                throw new Error('Contri not made');
+            }
+            resetForm();
+        }catch(error){
+            alert(error);
+        }
+    }
 
 
     const fileSubmitHandler = (e) => {
@@ -51,7 +76,7 @@ function Form(props) {
             type: "notes",
             token: token
         });
-        dispatch(sendUploadData({
+        const data = {
             name: titleRef.current.value,
             description: descriptionRef.current.value,
             mediaType: media.type,
@@ -59,7 +84,18 @@ function Form(props) {
             subject: subjectRef.current.value,
             type: "Notes",
             token: token
-        }));
+        };
+        if (props.id) {
+            dispatch(sendUploadData(data)
+            );
+        } else {
+            data = {
+                ...data,
+                globalId: props.id,
+                subject: props.subject,
+            }
+            sendGlobalTopicContri(data);
+        }
         formRef.current.reset();
     }
 
@@ -78,9 +114,18 @@ function Form(props) {
                             placeholder={field.title.split(':')[0]} ref={field.ref} required autoComplete='off'></input>
                     </div>
                 )}
+                <div className={classes.div}>
+                    <label id='label' className={classes.label}>Subject : </label>
+                    {
+                        props.id ? <input id='c' className={`${classes.modal_input} ${classes.disabled}`} type='text'
+                            placeholder='Subject' ref={subjectRef} required autoComplete='off' disabled defaultValue={props.subject}></input>
+                            : <input id='c' className={`${classes.modal_input}`} type='text'
+                                placeholder='Subject' ref={subjectRef} required autoComplete='off'></input>
+                    }
+                </div>
                 <div className="use_coreui_css">
                     <div className='mb-6 xl-3 lg-5'>
-                    <CFormInput type="file" id="formFile" ref={mediaRef} required autoComplete='off' />
+                        <CFormInput type="file" id="formFile" ref={mediaRef} required autoComplete='off' />
                     </div>
                 </div>
                 <div className={classes.butt}>

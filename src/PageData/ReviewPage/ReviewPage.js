@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { URL } from "../../store/helper";
 import ReviewCard from "./ReviewCard";
 import classes from './ReviewCard.module.css';
@@ -6,10 +7,19 @@ import classes from './ReviewCard.module.css';
 const ReviewPage = function (props) {
 
   const [details, setDetails] = useState([]);
+  const [state, changeState] = useState(false);
+
+  const token = useSelector((state) => state.loginStore.isLogin);
 
   const fetchData = async function () {
     try {
-      const response = await fetch(`${URL}`);
+      const response = await fetch(`${URL}/notes/review`,{
+        method:"GET",
+        headers: {
+          'Content-Type' : 'application/json',
+          'Authorization' : 'Bearer' + token
+        }
+      });
       if (!response.ok) {
         throw new Error();
       };
@@ -53,13 +63,13 @@ const ReviewPage = function (props) {
   }
 
   useEffect(() => {
-    setDetails(sampleData);
-    //async fetchData();
-  }, []);
+    fetchData();
+  }, [state]);
 
   const reloadPage = () => {
     //reload page;
-    window.location.reload();
+    changeState(!state);
+    /* window.location.reload(); */
   }
   return (
     <div className={classes.page}>

@@ -22,6 +22,14 @@
     margin-right: 0px;
 }
 
+.disabled{
+  background-color: #fff;
+  cursor: not-allowed;
+  font-weight: 700;
+  font-size: 20px !important;
+  border: 1px #00FF80 solid !important;
+}
+
 .margina{
   margin-left: 70px;
 }
@@ -59,6 +67,7 @@
 .modal_input:focus{
     outline: none;
 }
+
  /*
  ///////////////////////////////////////
  ///////////////////////////////////////

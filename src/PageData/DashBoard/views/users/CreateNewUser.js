@@ -20,41 +20,31 @@ const Dashboard = () => {
   const emailRef = useRef();
   const userNameRef = useRef();
   const passRef = useRef();
-  const roleRef = useRef();
 
   const [userNameValidMsg, setUserNameValid] = useState(false);
   const [emailValidMsg, setEmailValid] = useState(false);
   const [passwordValidMsg, setPassValid] = useState(false);
+  const [roleValidMsg, setRoleValid] = useState(false);
 
-  const token = useSelector((state) => state.loginStore.isLogin);
+  const token = useSelector((state) => state.loginStore.token);
 
 
-  const setNewUser = async function(profile){
-    const response = await fetch(`${URL}`, {
+  const setNewUser = async function (profile) {
+    const response = await fetch(`${URL}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer' + token
+        'Authorization': 'Bearer ' + token
       },
       body: JSON.stringify(profile),
     });
 
-    if(!response.ok){
-      throw new Error("Unable to create new Profile");
+    if (!response.ok) {
+      /* throw new Error("Unable to create new Profile"); */
+      const text = await response.json();
+      console.log(text.message);
+      throw new Error(text);
     }
-  }
-
-  const checkName = function (name) {
-    if (name === '') {
-      var a = document.querySelector('#validationServer01');
-      console.log(a);
-      var att = document.createAttribute("invalid");
-      a.setAttributeNode(att);
-      /* a.setAttribute('class', 'form-control is-valid'); */
-      console.log(name);
-      return false;
-    }
-    return true;
   }
 
   const checkUserName = function (userName) {
@@ -88,36 +78,51 @@ const Dashboard = () => {
     return true;
   }
 
-  const FormValidation = async (e) => {
-    e.preventDefault();
-    if (checkUserName(userNameRef.current.value) &&
-      checkEmail(emailRef.current.value) &&
-      checkPassword(passRef.current.value)) {
+  const checkRole = function (role) {
+    if (role === 'null') {
       var ele = document.querySelector('#validationServer04');
+      ele.setAttribute('class', 'form-control is-invalid');
+      ele.focus();
+      setRoleValid(true);
+      return false;
+    }
+    return true;
+  }
+
+  const FormValidation = (e) => {
+    e.preventDefault();
+    var ele = document.querySelector('#validationServer04');
+    if (checkEmail(emailRef.current.value) &&
+      checkUserName(userNameRef.current.value) &&
+      checkPassword(passRef.current.value) &&
+      checkRole(ele.value)) {
       const profile = {
         email: emailRef.current.value,
         name: nameRef.current.value,
         username: userNameRef.current.value,
         password: passRef.current.value,
-        role: ele.value
+        roles: ele.value
       }
-      /* try{
-        await setNewUser(profile);
+      try{
+        setNewUser(profile);
       }catch(error){
         alert(error);
-      } */
+      }
       console.log(profile);
     }
   }
 
   const offFocus = function () {
     const allInputs = document.querySelectorAll('input');
+    const ele = document.querySelector('#validationServer04');
+    ele.setAttribute('class', 'form-control');
     allInputs[1].setAttribute('class', 'form-control');
     allInputs[2].setAttribute('class', 'form-control');
     allInputs[3].setAttribute('class', 'form-control');
     setUserNameValid(false);
     setPassValid(false);
     setEmailValid(false);
+    setRoleValid(false);
   }
 
 
@@ -184,12 +189,15 @@ const Dashboard = () => {
           <CCol md={6}>
             <CFormLabel htmlFor="validationServer04">Role</CFormLabel>
             <CFormSelect id="validationServer04">
-              <option>Choose...</option>
-              <option>Admin</option>
-              <option>Reviewer</option>
-              <option>Intern</option>
-              <option>User</option>
+              <option value='null' defaultChecked>Choose...</option>
+              <option value='ROLE_USER,ROLE_SUBADMIN'>Sub-Admin</option>
+              <option value='ROLE_USER,ROLE_REVIEWER'>Reviewer</option>
+              <option value='ROLE_USER,ROLE_DESIGNER'>Designer</option>
+              <option value='ROLE_USER'>User</option>
             </CFormSelect>
+            {
+              roleValidMsg && <div style={{ fontSize: '15.5px', color: '#dd1e1e' }}>Please select role</div>
+            }
           </CCol>
         </div>
 
