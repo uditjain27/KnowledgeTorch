@@ -7,7 +7,7 @@ import classes from './topicsList.module.css';
 
 const MyTopics = (props) => {
 
-  const [topicList, setTopicList] = useState([{abc:'bc'},{abc:'ab'}]);
+  const [topicList, setTopicList] = useState([]);
   const token = useSelector((state) => state.loginStore.token);
 
   const fetchMyTopics = async function () {
@@ -33,6 +33,7 @@ const MyTopics = (props) => {
 
   useEffect(() => {
     //fetchMyTopics
+    console.log('Debug');
     fetchMyTopics();
   }, []);
 

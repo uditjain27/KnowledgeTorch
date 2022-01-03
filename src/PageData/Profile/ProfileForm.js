@@ -22,7 +22,6 @@ const ProfileForm = (props) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("Submitteddd");
     const c = contactNoRef.current.value;
     const data = {
       id: props.data.id,
@@ -33,6 +32,9 @@ const ProfileForm = (props) => {
       college: collegeRef.current.value,
       course: courseRef.current.value,
       year: yearRef.current.value,
+      views: props.data.views,
+      created: props.data.created,
+      uploads: props.data.uploads,
       token: token
     };
     console.log(data);

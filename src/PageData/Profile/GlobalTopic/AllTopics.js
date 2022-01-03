@@ -27,7 +27,6 @@ const AllTopics = (props) => {
       }
 
       const data = await response.json();
-      console.log(data.content);
       setTopicList(data.content);
     } catch (error) {
       console.log()

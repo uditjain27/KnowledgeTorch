@@ -33,7 +33,6 @@ const MyTopicsList = (props) => {
   */
   useEffect(() => {
     var newDate = new Date(props.ele.createdOn);
-    console.log(newDate);
     var year = newDate.getFullYear();
     var month = newDate.getMonth() + 1;
     var dt = newDate.getDate();
@@ -60,13 +59,13 @@ const MyTopicsList = (props) => {
         <span>{props.ele.name}</span>
         <span>{props.ele.tags}</span>
         <span>{date}</span>
-        <span>{props.ele.contributions.length}</span>
+        <span>{props.ele.contributions}</span>
       </div>
-      {/* {
+      {
         state && <div className={classes.expand}>
           
         </div>
-      } */}
+      }
     </Fragment >
   )
 }

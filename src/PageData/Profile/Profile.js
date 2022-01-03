@@ -40,7 +40,7 @@ function Profile(props) {
             created: responseData.createdDate,
             year: responseData.yearsOfExperience,
             views: responseData.views,
-            uploadCount: responseData.uploads,
+            uploads: responseData.uploads,
             available: true
         });
     }

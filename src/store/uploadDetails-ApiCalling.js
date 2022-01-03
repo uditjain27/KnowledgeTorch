@@ -55,7 +55,7 @@ export const sendUploadData = (data) => {
       return ids;
     };
     const sendSetFileRequest = async (id) => {
-    //const sendSetFileRequest = async () => {
+      //const sendSetFileRequest = async () => {
       //console.log(Object.entries(data.file)); 
       let fd = new FormData();
       fd.append("file", data.file);
@@ -82,9 +82,9 @@ export const sendUploadData = (data) => {
       const ids = await sendSetDescriptionRequest();
       console.log("description");
       var id;
-      if(data.url === '/notes'){
+      if (data.url === '/notes') {
         id = ids.id;
-      }else{
+      } else {
         console.log(ids.notes);
         id = ids.notes.id;
       }
@@ -158,6 +158,19 @@ export const fetchSearchDetails = (data) => {
 export const setProfileData = (data) => {
   return async (dispatch) => {
     const sendProfileData = async () => {
+      console.log({
+        id: data.id,
+        username: data.userName,
+        name: data.name,
+        email: data.email,
+        phone: data.contactNo,
+        organization: data.college,
+        specialization: data.course,
+        yearsOfExperience: data.year,
+        views: data.views,
+        createdDate: data.created,
+        uploads: data.uploads
+      });
       const response = await fetch(
         sendProfileDataURL,
         {

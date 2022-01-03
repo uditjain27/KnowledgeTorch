@@ -39,8 +39,9 @@ const AllTopicsList = (props) => {
   useEffect(() => {
     //fetchMyTopics
     //fetchAllTopics();
+    console.log(props.ele);
 
-    var newDate = new Date(props.ele.createdOn);
+    var newDate = new Date(props.ele?.createdOn);
     var year = newDate.getFullYear();
     var month = newDate.getMonth() + 1;
     var dt = newDate.getDate();
@@ -66,19 +67,18 @@ const AllTopicsList = (props) => {
   return (
     <Fragment>
       <div className={classes.allList_item} onClick={toggleState}>
-        <span>{props.ele.name}</span>
-        <span>{props.ele.raisedBy.name}
-          <br />
-          {props.ele.raisedBy.username}
+        <span>{props.ele?.name}</span>
+        <span>
+          {props.ele?.username}
         </span>
-        <span>{props.ele.tags}</span>
+        <span>{props.ele?.tags}</span>
         <span>{date}</span>
         <span>0</span>
       </div>
       {
         state && <div className={classes.expand}>
-          <div className={classes.description}>Description : {props.ele.description}</div>
-          <button onClick={() => redirectToUpload(props.ele.id, props.ele.subject)} className={classes.redirect}>Contribute ▶</button>
+          <div className={classes.description}>Description : {props.ele?.description}</div>
+          <button onClick={() => redirectToUpload(props.ele?.id, props.ele?.subject)} className={classes.redirect}>Contribute ▶</button>
         </div>
       }
     </Fragment >
