@@ -60,13 +60,13 @@ const MyTopicsList = (props) => {
         <span>{props.ele.name}</span>
         <span>{props.ele.tags}</span>
         <span>{date}</span>
-        <span>0</span>
+        <span>{props.ele.contributions.length}</span>
       </div>
-      {
+      {/* {
         state && <div className={classes.expand}>
           
         </div>
-      }
+      } */}
     </Fragment >
   )
 }

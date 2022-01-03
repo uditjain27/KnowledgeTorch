@@ -34,7 +34,7 @@ function Form(props) {
     }
     ];
 
-    const sendGlobalTopicContri = async (data) => {
+    /* const sendGlobalTopicContri = async (data) => {
         try {
             const response = await fetch(`${URL}/topics/${props.id}`, {
                 method: 'POST',
@@ -61,21 +61,12 @@ function Form(props) {
         }catch(error){
             alert(error);
         }
-    }
+    } */
 
 
     const fileSubmitHandler = (e) => {
         e.preventDefault();
-        const media = document.getElementById('d').files[0];
-        console.log({
-            name: titleRef.current.value,
-            description: descriptionRef.current.value,
-            mediaType: media.type,
-            file: media,
-            subject: subjectRef.current.value,
-            type: "notes",
-            token: token
-        });
+        const media = document.getElementById('formFile').files[0];
         const data = {
             name: titleRef.current.value,
             description: descriptionRef.current.value,
@@ -83,19 +74,12 @@ function Form(props) {
             file: media,
             subject: subjectRef.current.value,
             type: "Notes",
-            token: token
+            token: token,
+            url: props.id ? `/topics/${props.id}` : '/notes',
+            id: props.id,
         };
-        if (props.id) {
-            dispatch(sendUploadData(data)
-            );
-        } else {
-            data = {
-                ...data,
-                globalId: props.id,
-                subject: props.subject,
-            }
-            sendGlobalTopicContri(data);
-        }
+        console.log(data);
+        dispatch(sendUploadData(data));
         formRef.current.reset();
     }
 

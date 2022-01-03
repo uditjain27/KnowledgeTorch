@@ -41,12 +41,12 @@ const _nav = [
     name: 'Review Resources',
     to: '/dashboard/review',
     icon: <i className="far fa-file-pdf" style={{padding: '0 7px', fontSize: '20px', marginRight: '15px'}}></i>,
-  },{
+  },/* {
     component: CNavItem,
     name: 'Global Topics',
     to: '/dashboard/global',
     icon: <i className="fas fa-globe-asia" style={{padding: '0 7px', fontSize: '20px', marginRight: '15px'}}></i>,
-  },
+  } */,
 ]
 
 export default _nav

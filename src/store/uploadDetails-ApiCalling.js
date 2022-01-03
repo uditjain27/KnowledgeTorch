@@ -18,8 +18,15 @@ export const sendUploadData = (data) => {
     ); */
 
     const sendSetDescriptionRequest = async () => {
+      console.log({
+        description: data.description,
+        mediaType: data.mediaType,
+        name: data.name,
+        subject: data.subject,
+        type: data.type
+      });
       const response = await fetch(
-        sendDescriptionURL,
+        `${URL}${data.url}`,
         {
           method: 'POST',
           headers: {
@@ -43,6 +50,7 @@ export const sendUploadData = (data) => {
         throw new Error('Sending file data failed.');
       }
       const ids = await response.json();
+      console.log(ids);
 
       return ids;
     };
@@ -71,9 +79,16 @@ export const sendUploadData = (data) => {
 
     try {
       console.log("In function");
-      const id = await sendSetDescriptionRequest();
+      const ids = await sendSetDescriptionRequest();
       console.log("description");
-      await sendSetFileRequest(id.id);
+      var id;
+      if(data.url === '/notes'){
+        id = ids.id;
+      }else{
+        console.log(ids.notes);
+        id = ids.notes.id;
+      }
+      await sendSetFileRequest(id);
       //await sendSetFileRequest();
       alert("Uploaded Successfully");
       //console.log(id.id);

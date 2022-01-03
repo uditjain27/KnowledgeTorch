@@ -11,7 +11,6 @@ function Home(props) {
             <BigLogo></BigLogo>
             <TopContributors></TopContributors>
             <MeetOurTeam></MeetOurTeam>
-            <GlobalTopic></GlobalTopic>
         </header>
     )
 }
